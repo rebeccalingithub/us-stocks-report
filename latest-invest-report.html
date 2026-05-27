@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股投资报告 2026年05月26日</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+       background: #f5f5f7; color: #1d1d1f; font-size: 15px; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 24px 16px 60px; }
+h1 { font-size: 2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 4px; }
+.subtitle { color: #86868b; font-size: 0.9rem; margin-bottom: 32px; }
+.section { background: #fff; border-radius: 18px; padding: 24px 28px; margin-bottom: 20px;
+           box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.section h2 { font-size: 1.15rem; font-weight: 700; color: #0071e3; margin-bottom: 16px;
+              padding-bottom: 10px; border-bottom: 1.5px solid #e5e5ea; }
+.section h3 { font-size: 1rem; font-weight: 600; margin: 14px 0 8px; color: #1d1d1f; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin-bottom: 4px; }
+.card { background: #f5f5f7; border-radius: 14px; padding: 16px 18px; }
+.card .label { font-size: 0.75rem; color: #86868b; margin-bottom: 4px; letter-spacing: .5px; text-transform: uppercase; }
+.card .price { font-size: 1.6rem; font-weight: 700; color: #1d1d1f; }
+.card .meta { font-size: 0.82rem; color: #86868b; margin-top: 6px; }
+.stock-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.stock-table th { background: #f5f5f7; padding: 9px 10px; text-align: left; font-weight: 600;
+                  color: #86868b; font-size: 0.78rem; text-transform: uppercase; letter-spacing: .5px; }
+.stock-table td { padding: 9px 10px; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
+.stock-table tr:last-child td { border-bottom: none; }
+.stock-table tr:hover td { background: #f9f9fb; }
+.badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-up { background: #e8f9ee; color: #1a7a3c; }
+.badge-down { background: #fff0f0; color: #c0392b; }
+.badge-warn { background: #fff4e0; color: #b36200; }
+.badge-buy { background: #e8f0ff; color: #0051a2; }
+.badge-neutral { background: #f2f2f7; color: #555; }
+.quant-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 6px; }
+.quant-item { background: #f5f5f7; border-radius: 10px; padding: 8px 12px; text-align: center; }
+.quant-item .ql { font-size: 0.7rem; color: #86868b; margin-bottom: 2px; }
+.quant-item .qv { font-size: 1rem; font-weight: 700; }
+.risk-item { padding: 8px 0; border-bottom: 1px solid #f2f2f2; display: flex; gap: 10px; align-items: flex-start; }
+.risk-item:last-child { border-bottom: none; }
+.risk-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+ul.analysis-list { padding-left: 20px; }
+ul.analysis-list li { margin-bottom: 6px; }
+.factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 12px; }
+.factor-card { background: #f5f5f7; border-radius: 12px; padding: 14px 16px; }
+.factor-card .ft { font-size: 0.75rem; color: #86868b; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .5px; }
+.factor-card .fv { font-size: 0.95rem; font-weight: 600; }
+.earnings-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.earnings-table th { background: #f5f5f7; padding: 8px 12px; text-align: left; font-weight: 600;
+                     color: #86868b; font-size: 0.78rem; text-transform: uppercase; }
+.earnings-table td { padding: 8px 12px; border-bottom: 1px solid #f2f2f2; }
+.stock-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1.5px solid #f2f2f2; }
+.stock-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.stock-block .sh { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.stock-block .sh .sname { font-size: 1.1rem; font-weight: 700; }
+.stock-block .sh .sticker { font-size: 0.85rem; color: #86868b; }
+.tech-text { font-size: 0.88rem; color: #444; margin: 8px 0; }
+@media(max-width:600px){
+  .cards { grid-template-columns: 1fr 1fr; }
+  .quant-grid { grid-template-columns: 1fr 1fr; }
+  .factor-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>美股投资报告</h1>
+  <p class="subtitle">数据日期：2026年05月26日 &nbsp;|&nbsp; 数据来源：富途 OpenD（localhost:11111）&nbsp;|&nbsp; 版本：v2.2</p>
+  
+<div class="section">
+  <h2>一、核心标的复盘（15 只全覆盖）</h2>
+  
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">Apple</span>
+    <span class="sticker">AAPL</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 87.71</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#ff3b30">减仓</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>308.33</b></td>
+        <td><span style="color:#ff3b30;font-weight:600">-0.16%</span></td>
+        <td>87.71</td>
+        <td>291.27</td>
+        <td>271.53</td>
+        <td>261.53</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">RSI 87.71 极度超买，价格大幅偏离 MA20。苹果近期 AI 功能商业化叙事推动股价快速拉升，短线存在明显回调风险。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">308.33</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">271.53</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">261.53</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">339.16</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">Alphabet/Google</span>
+    <span class="sticker">GOOG</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-neutral">中性 50.43</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>384.84</b></td>
+        <td><span style="color:#34c759;font-weight:600">+1.44%</span></td>
+        <td>50.43</td>
+        <td>384.10</td>
+        <td>340.51</td>
+        <td>296.73</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">价格紧贴 MA20（384.10），RSI 50.43 中性。Gemini AI 战略稳步推进，技术面呈整固态势，方向选择中。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">384.84</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">340.51</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">296.73</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">423.32</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">台积电 TSM</span>
+    <span class="sticker">TSM</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-neutral">中性 57.60</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>412.32</b></td>
+        <td><span style="color:#34c759;font-weight:600">+1.93%</span></td>
+        <td>57.60</td>
+        <td>402.96</td>
+        <td>374.57</td>
+        <td>317.66</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">均线完美多头排列，RSI 57.60 中性偏强。AI 芯片代工需求旺盛，CoWoS 封装产能持续扩张，中期看好。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">412.32</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">374.57</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">317.66</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">453.55</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">美光科技 MU</span>
+    <span class="sticker">MU</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 70.64</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>895.88</b></td>
+        <td><span style="color:#34c759;font-weight:600">+19.29%</span></td>
+        <td>70.64</td>
+        <td>687.31</td>
+        <td>528.37</td>
+        <td>326.33</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">单日暴涨 19.29%，严重偏离 MA20（687.31）。HBM 出货量超预期、财报大幅超预期。高位不追，等回踩。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">895.88</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">528.37</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">326.33</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">985.47</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">英伟达 NVIDIA</span>
+    <span class="sticker">NVDA</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-up">偏强 63.94</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>214.86</b></td>
+        <td><span style="color:#ff3b30;font-weight:600">-0.22%</span></td>
+        <td>63.94</td>
+        <td>214.66</td>
+        <td>197.50</td>
+        <td>187.19</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">价格紧贴 MA20（214.66），RSI 63.94。整固后方向尚不明朗，Blackwell 出货节奏是关键变量。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">214.86</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">197.50</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">187.19</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">236.35</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">特斯拉 Tesla</span>
+    <span class="sticker">TSLA</span>
+    <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-up">偏强 64.78</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>433.59</b></td>
+        <td><span style="color:#34c759;font-weight:600">+1.78%</span></td>
+        <td>64.78</td>
+        <td>412.00</td>
+        <td>389.18</td>
+        <td>410.58</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">价格高于 MA20/MA50，但跌破 MA200（410.58）。RSI 64.78。自动驾驶与机器人叙事支撑估值，但 MA200 压力需突破。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">433.59</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">389.18</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">410.58</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">455.27</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">微软 Microsoft</span>
+    <span class="sticker">MSFT</span>
+    <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-neutral">中性 54.85</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>416.03</b></td>
+        <td><span style="color:#ff3b30;font-weight:600">-0.61%</span></td>
+        <td>54.85</td>
+        <td>415.41</td>
+        <td>400.04</td>
+        <td>457.77</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">价格 416.03 低于 MA200（457.77），长期趋势偏弱。RSI 54.85，整体动能不足，等待 MA200 修复。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">416.03</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">400.04</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">457.77</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">436.83</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">纳斯达克100 ETF</span>
+    <span class="sticker">QQQ</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 74.59</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>730.28</b></td>
+        <td><span style="color:#34c759;font-weight:600">+1.78%</span></td>
+        <td>74.59</td>
+        <td>698.21</td>
+        <td>644.76</td>
+        <td>614.41</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">RSI 74.59 超买，均线三线多头排列。代表纳百整体趋势，短线偏热但中期趋势完好。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">730.28</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">644.76</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">614.41</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">803.31</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">Circle Internet</span>
+    <span class="sticker">CRCL</span>
+    <span class="badge badge-down">空头排列</span> <span class="badge badge-neutral">中性 43.39</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#666">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>104.17</b></td>
+        <td><span style="color:#ff3b30;font-weight:600">-7.91%</span></td>
+        <td>43.39</td>
+        <td>112.45</td>
+        <td>107.26</td>
+        <td>103.61</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">价格 104.17 跌破 MA20（112.45）和 MA50（107.26），RSI 43.39 偏弱。稳定币监管不确定性持续压制。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">104.17</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">107.26</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">103.61</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">109.38</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">Vistra Energy</span>
+    <span class="sticker">VST</span>
+    <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-neutral">中性 53.26</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#666">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>164.56</b></td>
+        <td><span style="color:#34c759;font-weight:600">+5.30%</span></td>
+        <td>53.26</td>
+        <td>150.88</td>
+        <td>154.68</td>
+        <td>173.55</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">价格 164.56 低于 MA200（173.55），RSI 53.26。AI 数据中心电力需求是长期看点，短期 MA200 压力需注意。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">164.56</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">154.68</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">173.55</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">172.79</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">IREN Ltd</span>
+    <span class="sticker">IREN</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-neutral">中性 54.85</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#34c759">加仓</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>59.78</b></td>
+        <td><span style="color:#34c759;font-weight:600">+5.19%</span></td>
+        <td>54.85</td>
+        <td>53.28</td>
+        <td>46.46</td>
+        <td>44.98</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">均线完美多头排列（MA20 53.28→MA50 46.46→MA200 44.98），RSI 54.85。比特币算力+AI 算力双赛道，趋势最健康。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">59.78</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">46.46</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">44.98</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">65.76</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">康宁 Corning</span>
+    <span class="sticker">GLW</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-up">偏强 64.53</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>196.17</b></td>
+        <td><span style="color:#34c759;font-weight:600">+1.09%</span></td>
+        <td>64.53</td>
+        <td>181.49</td>
+        <td>163.73</td>
+        <td>110.32</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">均线三线多头排列，RSI 64.53。AI 光互联需求带动光纤业务超预期增长，价格较 MA200 溢价显著。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">196.17</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">163.73</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">110.32</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">215.79</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">博通 Broadcom</span>
+    <span class="sticker">AVGO</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-neutral">中性 47.68</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>422.01</b></td>
+        <td><span style="color:#34c759;font-weight:600">+1.90%</span></td>
+        <td>47.68</td>
+        <td>419.28</td>
+        <td>378.97</td>
+        <td>349.49</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">RSI 47.68 中性。财报窗口（2026-06-03 盘后）临近，AI ASIC 芯片需求指引将是关键。财报前持有，不追涨。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">422.01</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">378.97</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">349.49</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">464.21</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">Arista Networks</span>
+    <span class="sticker">ANET</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-neutral">中性 41.72</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>158.01</b></td>
+        <td><span style="color:#34c759;font-weight:600">+2.58%</span></td>
+        <td>41.72</td>
+        <td>152.33</td>
+        <td>147.56</td>
+        <td>139.89</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">均线多头排列，RSI 41.72 偏弱，存在回调买入机会。云网络交换机需求随 AI 推理扩容持续增长。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">158.01</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">147.56</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">139.89</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">173.81</div></div>
+  </div>
+</div>
+<div class="stock-block">
+  <div class="sh">
+    <span class="sname">Meta Platforms</span>
+    <span class="sticker">META</span>
+    <span class="badge badge-down">空头排列</span> <span class="badge badge-neutral">中性 54.93</span>
+    <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+  </div>
+  <table class="stock-table">
+    <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>612.34</b></td>
+        <td><span style="color:#34c759;font-weight:600">+0.34%</span></td>
+        <td>54.93</td>
+        <td>615.79</td>
+        <td>617.79</td>
+        <td>667.91</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="tech-text">价格 612.34 全面跌破 MA20（615.79）、MA50（617.79）、MA200（667.91）。RSI 54.93，短期技术面疲弱。</p>
+  <div class="quant-grid">
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">612.34</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">617.79</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">667.91</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">642.96</div></div>
+  </div>
+</div>
+</div>
+<div class="section">
+  <h2>二、潜力板块挖掘</h2>
+  <h3>🔵 AI 算力基础设施（高弹性方向）</h3>
+  <ul class="analysis-list">
+    <li><b>IREN</b>（RSI 54.85，均线完美多头）：比特币挖矿 + AI 算力租赁双驱动，
+    价格站上全部 MA，是本轮行情技术面最健康的标的之一。</li>
+    <li><b>GLW 康宁</b>（RSI 64.53）：AI 数据中心光互联基础设施，
+    单日 +1.09%，均线多头排列，需求持续受益于 AI 建设周期。</li>
+    <li><b>ANET</b>（RSI 41.72，偏弱）：云网络交换机龙头，
+    RSI 低位可能是中线建仓机会，等待企稳信号。</li>
+  </ul>
+  <h3>🟡 清洁能源/电力（AI 电力需求赛道）</h3>
+  <ul class="analysis-list">
+    <li><b>VST Vistra</b>（RSI 53.26，+5.30%）：
+    数据中心电力需求推动核电/天然气发电重估，
+    当前价格低于 MA200（173.55），突破后或有较大空间。</li>
+  </ul>
+  <h3>🔴 规避方向</h3>
+  <ul class="analysis-list">
+    <li><b>CRCL</b>（RSI 43.39，-7.91%）：
+    稳定币监管风险尚未消化，技术面跌破 MA20/MA50，暂时回避。</li>
+    <li><b>META</b>（RSI 54.93）：价格跌破三条均线，短期弱势格局未改变。</li>
+  </ul>
+</div>
+<div class="section">
+  <h2>三、整体市场策略</h2>
+  <div class="factor-grid">
+    <div class="factor-card">
+      <div class="ft">大盘判断</div>
+      <div class="fv">中期牛市结构完好。SPY/QQQ 均站上三线（MA20/MA50/MA200），但 RSI 双超买（
+      SPY 71.48 / QQQ 74.59），短线存在 2-4% 回调可能。</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">仓位建议</div>
+      <div class="fv">七成仓位 + 三成现金备用。超买位不追高，等回调至 MA20 附近择机补仓。</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">主线方向</div>
+      <div class="fv">AI 算力链（NVDA/TSM/AVGO/GLW/ANET）+ 清洁电力（IREN/VST）。
+      半导体周期（MU 财报确认），但高位需等回踩。</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">减仓方向</div>
+      <div class="fv">AAPL（RSI 87.71 极度超买）酌情减仓；
+      CRCL/META 技术面偏弱，控制仓位。</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <h2>四、明日展望与风险预警（2026-05-27）</h2>
+  <h3>关注焦点</h3>
+  <ul class="analysis-list">
+    <li><b>PCE 通胀数据（今日发布）：</b>核心 PCE 若超预期将直接打压高估值科技股（QQQ RSI 74.59），
+    尤其是 AAPL（RSI 87.71）首当其冲。</li>
+    <li><b>MU 高位震荡：</b>MU 昨日 +19.29%，今日需观察是否出现高位放量换手，
+    获利盘规模决定半导体板块走势。</li>
+    <li><b>NVDA 方向选择：</b>NVDA 价格（214.86）紧贴 MA20（214.66），
+    方向突破将带动 AI 板块整体。</li>
+  </ul>
+  <h3>风险预警</h3>
+  <div class="risk-item"><div class="risk-dot" style="background:#ff3b30"></div>
+    <div><b>高度警惕 AAPL（RSI 87.71）：</b>若跌破 MA20（291.27），
+    立即执行减仓至半仓操作。</div></div>
+  <div class="risk-item"><div class="risk-dot" style="background:#ff9500"></div>
+    <div><b>MU 回踩风险：</b>暴涨后的第二日常见高位震荡，MA20（687.31）是支撑关键位。</div></div>
+  <div class="risk-item"><div class="risk-dot" style="background:#ff9500"></div>
+    <div><b>SPY/QQQ 超买回调：</b>SPY MA20 支撑 733.36，跌破视为短期趋势走弱信号。</div></div>
+  <div class="risk-item"><div class="risk-dot" style="background:#ffcc00"></div>
+    <div><b>AVGO 财报前（2026-06-03）：</b>持仓不加仓，防范 AI 资本开支指引不及预期的风险。</div></div>
+</div>
+  <p style="text-align:center;color:#86868b;font-size:.8rem;margin-top:20px">
+    所有价格/RSI/MA 数据均来自富途 OpenD 实时接口 · 禁止 LLM 估算 · 生成于 2026-05-27
+  </p>
+</div>
+</body>
+</html>

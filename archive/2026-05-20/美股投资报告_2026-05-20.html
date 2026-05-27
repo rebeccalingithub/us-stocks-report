@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股投资报告 - 2026年05月20日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Segoe UI', Roboto, sans-serif;
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    line-height: 1.6;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+.header {
+    background: #0071e3;
+    color: white;
+    padding: 36px 32px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+.header h1 { font-size: 30px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; }
+.header .date { font-size: 15px; opacity: 0.92; }
+.section {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0071e3;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f5f5f7;
+}
+.sub-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin: 16px 0 10px;
+}
+.up { color: #34c759; font-weight: 600; }
+.down { color: #ff3b30; font-weight: 600; }
+.neutral { color: #86868b; font-weight: 600; }
+.muted { color: #86868b; font-size: 13px; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+th { background: #0071e3; color: white; padding: 12px 10px; text-align: left; font-weight: 600; font-size: 13px; }
+th:first-child { border-top-left-radius: 8px; }
+th:last-child { border-top-right-radius: 8px; }
+td { padding: 12px 10px; border-bottom: 1px solid #e8e8ed; }
+tr:hover { background: #fafafa; }
+
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.card {
+    background: #f5f5f7;
+    border-radius: 12px;
+    padding: 24px;
+}
+.card .label { font-size: 13px; color: #86868b; margin-bottom: 6px; }
+.card .price { font-size: 34px; font-weight: 700; color: #1d1d1f; }
+.card .chg { font-size: 16px; font-weight: 600; margin: 6px 0 12px; }
+.card .meta { font-size: 13px; color: #515154; line-height: 1.7; }
+
+.sug-buy { background: #e8f9ee; color: #1d8b3a; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 12px; }
+.sug-hold { background: #fff5e0; color: #b7791f; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 12px; }
+.sug-sell { background: #fdecec; color: #c0392b; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 12px; }
+
+.box-info { background: #f5f8fc; border-left: 3px solid #0071e3; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 10px 0; }
+.box-warn { background: #fff8e6; border-left: 3px solid #ff9500; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 10px 0; }
+.box-bull { background: #e8f9ee; border-left: 3px solid #34c759; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 10px 0; }
+.box-bear { background: #fdecec; border-left: 3px solid #ff3b30; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 10px 0; }
+
+.stock-block {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid #e8e8ed;
+}
+.stock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.stock-name { font-size: 18px; font-weight: 700; color: #1d1d1f; }
+.stock-sub { font-size: 13px; color: #86868b; margin-left: 6px; }
+.stock-price-tag { font-size: 20px; font-weight: 700; color: #0071e3; }
+
+.mini-table { width: 100%; font-size: 13px; margin: 8px 0; }
+.mini-table th { background: #1d1d1f; color: #fff; padding: 8px; font-size: 12px; }
+.mini-table td { padding: 8px; text-align: center; }
+
+.tag { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; margin-right: 6px; margin-bottom: 4px; }
+.tag-blue { background: #e6f1fb; color: #0071e3; }
+.tag-orange { background: #fff5e0; color: #b7791f; }
+.tag-red { background: #fdecec; color: #c0392b; }
+.tag-green { background: #e8f9ee; color: #1d8b3a; }
+
+ul { padding-left: 20px; line-height: 1.85; }
+ul li { margin-bottom: 4px; }
+
+.footer { text-align: center; padding: 20px; font-size: 12px; color: #86868b; }
+
+@media (max-width: 700px) {
+    body { padding: 10px; }
+    .header { padding: 22px 16px; }
+    .header h1 { font-size: 22px; }
+    .section { padding: 18px; border-radius: 12px; }
+    .section-title { font-size: 17px; }
+    .cards { grid-template-columns: 1fr; }
+    .card .price { font-size: 28px; }
+    table, .mini-table { font-size: 12px; }
+    th, td { padding: 8px 6px; }
+    .stock-block { padding: 14px; }
+    .stock-name { font-size: 16px; }
+    .stock-price-tag { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>📈 美股投资报告</h1>
+    <div class="date">2026年05月20日（周三）· 共 15 只核心标的</div>
+  </div>
+
+  <!-- 模块一：核心标的复盘 -->
+  <div class="section">
+    <div class="section-title">一、核心标的复盘（15 只）</div>
+    <div class="sub-title">📊 总览表</div>
+    <table>
+      <tr>
+        <th>股票</th><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th><th>操作建议</th>
+      </tr>
+      
+<tr>
+  <td><strong>苹果</strong><br><span class="muted">AAPL</span></td>
+  <td>$302.25</td>
+  <td class="up">+1.10%</td>
+  <td>84.81</td>
+  <td>$285.73</td>
+  <td>$268.40</td>
+  <td>$260.09</td>
+  <td><span class="sug-sell">减仓止盈</span></td>
+</tr>
+<tr>
+  <td><strong>谷歌</strong><br><span class="muted">GOOG</span></td>
+  <td>$384.90</td>
+  <td class="up">+0.00%</td>
+  <td>52.28</td>
+  <td>$378.15</td>
+  <td>$335.82</td>
+  <td>$293.94</td>
+  <td><span class="sug-hold">持有</span></td>
+</tr>
+<tr>
+  <td><strong>台积电</strong><br><span class="muted">TSM</span></td>
+  <td>$401.62</td>
+  <td class="up">+2.29%</td>
+  <td>52.43</td>
+  <td>$401.26</td>
+  <td>$370.63</td>
+  <td>$315.04</td>
+  <td><span class="sug-hold">持有</span></td>
+</tr>
+<tr>
+  <td><strong>美光科技</strong><br><span class="muted">MU</span></td>
+  <td>$731.99</td>
+  <td class="up">+4.76%</td>
+  <td>69.30</td>
+  <td>$642.01</td>
+  <td>$505.18</td>
+  <td>$315.93</td>
+  <td><span class="sug-hold">持有</span></td>
+</tr>
+<tr>
+  <td><strong>英伟达</strong><br><span class="muted">NVDA</span></td>
+  <td>$223.47</td>
+  <td class="up">+1.30%</td>
+  <td>69.80</td>
+  <td>$213.40</td>
+  <td>$195.49</td>
+  <td>$186.63</td>
+  <td><span class="sug-hold">持有</span></td>
+</tr>
+<tr>
+  <td><strong>特斯拉</strong><br><span class="muted">TSLA</span></td>
+  <td>$417.26</td>
+  <td class="up">+3.25%</td>
+  <td>62.09</td>
+  <td>$404.57</td>
+  <td>$387.51</td>
+  <td>$408.95</td>
+  <td><span class="sug-hold">持有</span></td>
+</tr>
+<tr>
+  <td><strong>微软</strong><br><span class="muted">MSFT</span></td>
+  <td>$420.15</td>
+  <td class="up">+0.87%</td>
+  <td>60.58</td>
+  <td>$415.84</td>
+  <td>$398.91</td>
+  <td>$459.39</td>
+  <td><span class="sug-hold">持有</span></td>
+</tr>
+<tr>
+  <td><strong>纳指100ETF</strong><br><span class="muted">QQQ</span></td>
+  <td>$713.15</td>
+  <td class="up">+1.66%</td>
+  <td>73.11</td>
+  <td>$689.07</td>
+  <td>$637.44</td>
+  <td>$612.05</td>
+  <td><span class="sug-hold">谨慎持有</span></td>
+</tr>
+<tr>
+  <td><strong>Circle</strong><br><span class="muted">CRCL</span></td>
+  <td>$111.62</td>
+  <td class="up">+0.53%</td>
+  <td>60.82</td>
+  <td>$110.60</td>
+  <td>$107.46</td>
+  <td>$104.29</td>
+  <td><span class="sug-hold">持有</span></td>
+</tr>
+<tr>
+  <td><strong>Vistra</strong><br><span class="muted">VST</span></td>
+  <td>$144.00</td>
+  <td class="up">+6.90%</td>
+  <td>36.75</td>
+  <td>$151.78</td>
+  <td>$154.82</td>
+  <td>$174.27</td>
+  <td><span class="sug-sell">清仓避险</span></td>
+</tr>
+<tr>
+  <td><strong>Iris Energy</strong><br><span class="muted">IREN</span></td>
+  <td>$52.71</td>
+  <td class="up">+10.41%</td>
+  <td>56.97</td>
+  <td>$52.09</td>
+  <td>$45.47</td>
+  <td>$44.37</td>
+  <td><span class="sug-hold">持有</span></td>
+</tr>
+<tr>
+  <td><strong>康宁</strong><br><span class="muted">GLW</span></td>
+  <td>$180.69</td>
+  <td class="up">+2.76%</td>
+  <td>57.37</td>
+  <td>$178.06</td>
+  <td>$159.90</td>
+  <td>$108.36</td>
+  <td><span class="sug-hold">持有</span></td>
+</tr>
+<tr>
+  <td><strong>博通</strong><br><span class="muted">AVGO</span></td>
+  <td>$417.76</td>
+  <td class="up">+1.63%</td>
+  <td>50.13</td>
+  <td>$419.79</td>
+  <td>$373.91</td>
+  <td>$347.71</td>
+  <td><span class="sug-hold">持有观察</span></td>
+</tr>
+<tr>
+  <td><strong>Arista</strong><br><span class="muted">ANET</span></td>
+  <td>$140.49</td>
+  <td class="down">-0.77%</td>
+  <td>22.56</td>
+  <td>$155.40</td>
+  <td>$146.46</td>
+  <td>$139.57</td>
+  <td><span class="sug-buy">建仓观察</span></td>
+</tr>
+<tr>
+  <td><strong>Meta</strong><br><span class="muted">META</span></td>
+  <td>$605.06</td>
+  <td class="up">+0.41%</td>
+  <td>45.60</td>
+  <td>$624.93</td>
+  <td>$619.29</td>
+  <td>$670.22</td>
+  <td><span class="sug-sell">清仓避险</span></td>
+</tr>
+    </table>
+
+    <div class="sub-title" style="margin-top:24px;">📋 个股详细复盘</div>
+    
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">苹果</span><span class="stock-sub">(AAPL)</span>
+    </div>
+    <div class="stock-price-tag">$302.25 <span class="up">+1.10%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$302.25</td><td class="up">+1.10%</td><td>84.81</td><td>$285.73</td><td>$268.40</td><td>$260.09</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$285.73）>MA50（$268.40）呈多头排列；RSI=84.8 已进入超买区，需警惕短线回调；当日小幅波动 +1.10%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：减仓止盈</strong>。短线减仓 1/3 锁定利润，止损位 $285.73（MA20）。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">谷歌</span><span class="stock-sub">(GOOG)</span>
+    </div>
+    <div class="stock-price-tag">$384.90 <span class="up">+0.00%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$384.90</td><td class="up">+0.00%</td><td>52.28</td><td>$378.15</td><td>$335.82</td><td>$293.94</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$378.15）>MA50（$335.82）呈多头排列；RSI=52.3 处于中性偏强区间；当日小幅波动 +0.00%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有</strong>。持有为主，回踩 MA20（$378.15）加仓，跌破 MA50（$335.82）止损。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">台积电</span><span class="stock-sub">(TSM)</span>
+    </div>
+    <div class="stock-price-tag">$401.62 <span class="up">+2.29%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$401.62</td><td class="up">+2.29%</td><td>52.43</td><td>$401.26</td><td>$370.63</td><td>$315.04</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$401.26）>MA50（$370.63）呈多头排列；RSI=52.4 处于中性偏强区间；当日强势上涨 +2.29%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有</strong>。持有为主，回踩 MA20（$401.26）加仓，跌破 MA50（$370.63）止损。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">美光科技</span><span class="stock-sub">(MU)</span>
+    </div>
+    <div class="stock-price-tag">$731.99 <span class="up">+4.76%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$731.99</td><td class="up">+4.76%</td><td>69.30</td><td>$642.01</td><td>$505.18</td><td>$315.93</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$642.01）>MA50（$505.18）呈多头排列；RSI=69.3 处于中性偏强区间；当日强势上涨 +4.76%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有</strong>。持有为主，回踩 MA20（$642.01）加仓，跌破 MA50（$505.18）止损。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">英伟达</span><span class="stock-sub">(NVDA)</span>
+    </div>
+    <div class="stock-price-tag">$223.47 <span class="up">+1.30%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$223.47</td><td class="up">+1.30%</td><td>69.80</td><td>$213.40</td><td>$195.49</td><td>$186.63</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$213.40）>MA50（$195.49）呈多头排列；RSI=69.8 处于中性偏强区间；当日小幅波动 +1.30%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有</strong>。持有为主，回踩 MA20（$213.40）加仓，跌破 MA50（$195.49）止损。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">特斯拉</span><span class="stock-sub">(TSLA)</span>
+    </div>
+    <div class="stock-price-tag">$417.26 <span class="up">+3.25%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$417.26</td><td class="up">+3.25%</td><td>62.09</td><td>$404.57</td><td>$387.51</td><td>$408.95</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>价格站稳 MA200（$408.95）之上，长期趋势完好；MA20（$404.57）>MA50（$387.51）呈多头排列；RSI=62.1 处于中性偏强区间；当日强势上涨 +3.25%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有</strong>。持有为主，回踩 MA20（$404.57）加仓，跌破 MA50（$387.51）止损。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">微软</span><span class="stock-sub">(MSFT)</span>
+    </div>
+    <div class="stock-price-tag">$420.15 <span class="up">+0.87%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$420.15</td><td class="up">+0.87%</td><td>60.58</td><td>$415.84</td><td>$398.91</td><td>$459.39</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>价格跌破 MA200（$459.39），长期趋势承压；MA20（$415.84）>MA50（$398.91）呈多头排列；RSI=60.6 处于中性偏强区间；当日小幅波动 +0.87%。 跌破 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有</strong>。持有为主，回踩 MA20（$415.84）加仓，跌破 MA50（$398.91）止损。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">纳指100ETF</span><span class="stock-sub">(QQQ)</span>
+    </div>
+    <div class="stock-price-tag">$713.15 <span class="up">+1.66%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$713.15</td><td class="up">+1.66%</td><td>73.11</td><td>$689.07</td><td>$637.44</td><td>$612.05</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$689.07）>MA50（$637.44）呈多头排列；RSI=73.1 已进入超买区，需警惕短线回调；当日小幅波动 +1.66%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：谨慎持有</strong>。短线减仓 1/3 锁定利润，止损位 $689.07（MA20）。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">Circle</span><span class="stock-sub">(CRCL)</span>
+    </div>
+    <div class="stock-price-tag">$111.62 <span class="up">+0.53%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$111.62</td><td class="up">+0.53%</td><td>60.82</td><td>$110.60</td><td>$107.46</td><td>$104.29</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$110.60）>MA50（$107.46）呈多头排列；RSI=60.8 处于中性偏强区间；当日小幅波动 +0.53%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有</strong>。持有为主，回踩 MA20（$110.60）加仓，跌破 MA50（$107.46）止损。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">Vistra</span><span class="stock-sub">(VST)</span>
+    </div>
+    <div class="stock-price-tag">$144.00 <span class="up">+6.90%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$144.00</td><td class="up">+6.90%</td><td>36.75</td><td>$151.78</td><td>$154.82</td><td>$174.27</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>价格跌破 MA200（$174.27），长期趋势承压；MA20（$151.78）<MA50（$154.82）呈空头排列；RSI=36.8 处于中性偏弱区间；当日强势上涨 +6.90%。 跌破 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：清仓避险</strong>。观望为主，等待企稳信号；激进者可在 $154.82 附近轻仓试多。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">Iris Energy</span><span class="stock-sub">(IREN)</span>
+    </div>
+    <div class="stock-price-tag">$52.71 <span class="up">+10.41%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$52.71</td><td class="up">+10.41%</td><td>56.97</td><td>$52.09</td><td>$45.47</td><td>$44.37</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$52.09）>MA50（$45.47）呈多头排列；RSI=57.0 处于中性偏强区间；当日强势上涨 +10.41%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有</strong>。持有为主，回踩 MA20（$52.09）加仓，跌破 MA50（$45.47）止损。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">康宁</span><span class="stock-sub">(GLW)</span>
+    </div>
+    <div class="stock-price-tag">$180.69 <span class="up">+2.76%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$180.69</td><td class="up">+2.76%</td><td>57.37</td><td>$178.06</td><td>$159.90</td><td>$108.36</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$178.06）>MA50（$159.90）呈多头排列；RSI=57.4 处于中性偏强区间；当日强势上涨 +2.76%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有</strong>。持有为主，回踩 MA20（$178.06）加仓，跌破 MA50（$159.90）止损。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">博通</span><span class="stock-sub">(AVGO)</span>
+    </div>
+    <div class="stock-price-tag">$417.76 <span class="up">+1.63%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$417.76</td><td class="up">+1.63%</td><td>50.13</td><td>$419.79</td><td>$373.91</td><td>$347.71</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$419.79）>MA50（$373.91）呈多头排列；RSI=50.1 处于中性偏强区间；当日小幅波动 +1.63%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：持有观察</strong>。观望为主，等待企稳信号；激进者可在 $373.91 附近轻仓试多。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">Arista</span><span class="stock-sub">(ANET)</span>
+    </div>
+    <div class="stock-price-tag">$140.49 <span class="down">-0.77%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$140.49</td><td class="down">-0.77%</td><td>22.56</td><td>$155.40</td><td>$146.46</td><td>$139.57</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>MA20（$155.40）>MA50（$146.46）呈多头排列；RSI=22.6 进入超卖区，关注反弹机会；当日小幅波动 -0.77%。 站上 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：建仓观察</strong>。分批建仓抄底，第一买入区间 $137.68-$140.49，止损 $142.07。
+  </div>
+</div>
+
+<div class="stock-block">
+  <div class="stock-header">
+    <div>
+      <span class="stock-name">Meta</span><span class="stock-sub">(META)</span>
+    </div>
+    <div class="stock-price-tag">$605.06 <span class="up">+0.41%</span></div>
+  </div>
+  <table class="mini-table">
+    <tr><th>收盘价</th><th>涨跌幅</th><th>RSI(14)</th><th>MA20</th><th>MA50</th><th>MA200</th></tr>
+    <tr><td>$605.06</td><td class="up">+0.41%</td><td>45.60</td><td>$624.93</td><td>$619.29</td><td>$670.22</td></tr>
+  </table>
+  <div class="box-info">
+    <strong>📈 技术面分析：</strong>价格跌破 MA200（$670.22），长期趋势承压；MA20（$624.93）>MA50（$619.29）呈多头排列；RSI=45.6 处于中性偏弱区间；当日小幅波动 +0.41%。 跌破 MA200。
+  </div>
+  <div class="box-warn">
+    <strong>操作建议：清仓避险</strong>。观望为主，等待企稳信号；激进者可在 $619.29 附近轻仓试多。
+  </div>
+</div>
+
+  </div>
+
+  <!-- 模块二：潜力板块挖掘 -->
+  <div class="section">
+    <div class="section-title">二、潜力板块挖掘</div>
+    <div class="sub-title">🎯 筛选标准（技术面 + 资金面 + 催化）</div>
+    <ul>
+      <li><strong>技术面：</strong>价格站上 MA50/MA200，RSI 在 45-70 健康区间</li>
+      <li><strong>资金面：</strong>近 5 日成交量放大 30% 以上，机构持仓上升</li>
+      <li><strong>催化：</strong>有明确财报 / 行业事件驱动（如 NVDA 财报、降息节奏）</li>
+    </ul>
+
+    <div class="sub-title">🚀 4 个高潜力板块</div>
+
+    <div class="box-bull">
+      <strong>① AI 算力链（NVDA / AVGO / ANET）</strong><br>
+      <span class="muted">核心逻辑：NVDA 财报指引若超预期，将带动整条算力链估值上修。关注节奏：周四盘后财报为关键节点；指引超预期 → 5/22 开盘追入；指引平淡 → 等回踩 MA50 加仓。</span>
+    </div>
+
+    <div class="box-bull">
+      <strong>② AI 数据中心 + 电力（VST / IREN）</strong><br>
+      <span class="muted">核心逻辑：AI 算力扩张推升电力需求，独立电力商 + 加密矿企转 AI 数据中心成为新叙事。关注节奏：盘整后突破前高即可介入；严格止损 -8%。</span>
+    </div>
+
+    <div class="box-bull">
+      <strong>③ 半导体（TSM / MU）</strong><br>
+      <span class="muted">核心逻辑：HBM 价格上行 + AI 芯片代工订单饱满。MU 受益 HBM3E 量产，TSM 享受 N2/N3 工艺溢价。关注节奏：跟随 NVDA 节奏，财报后 1-2 个交易日观察跟随强度。</span>
+    </div>
+
+    <div class="box-bull">
+      <strong>④ 稳定币 / 加密金融（CRCL / COIN）</strong><br>
+      <span class="muted">核心逻辑：稳定币立法落地预期 + 链上结算份额快速扩张。Circle 作为 USDC 发行方核心受益。关注节奏：情绪驱动较重，回调 8-10% 分批介入，杜绝追高。</span>
+    </div>
+  </div>
+
+  <!-- 模块三：整体市场策略 -->
+  <div class="section">
+    <div class="section-title">三、整体市场策略</div>
+
+    <div class="sub-title">🧭 大盘判断</div>
+    <p>纳指处于超买，趋势完整但加速段已过。短线核心矛盾是 NVDA 财报指引是否兑现 AI 资本开支扩张。</p>
+
+    <div class="sub-title">💼 仓位建议</div>
+    <table>
+      <tr><th>风险偏好</th><th>权益仓位</th><th>现金</th><th>主要配置方向</th></tr>
+      <tr><td>保守</td><td>50-60%</td><td>40-50%</td><td>SPY/QQQ + 防御性蓝筹（MSFT/AAPL）</td></tr>
+      <tr><td>平衡</td><td>65-75%</td><td>25-35%</td><td>AI 算力链 + 半导体 + 蓝筹科技</td></tr>
+      <tr><td>进取</td><td>75-85%</td><td>15-25%</td><td>AI 链 + 电力 + 稳定币板块</td></tr>
+    </table>
+
+    <div class="sub-title">🎯 主线方向</div>
+    <ul>
+      <li><strong>主线一：</strong>AI 算力 + 数据中心电力（NVDA / AVGO / ANET / VST / IREN）</li>
+      <li><strong>主线二：</strong>半导体周期 + HBM 涨价（TSM / MU）</li>
+      <li><strong>主线三：</strong>云 + 应用层 AI 货币化（MSFT / GOOG / META）</li>
+      <li><strong>防御线：</strong>蓝筹现金牛（AAPL / GLW）</li>
+    </ul>
+  </div>
+
+  <!-- 模块四：明日展望与风险预警 -->
+  <div class="section">
+    <div class="section-title">四、明日展望与风险预警</div>
+
+    <div class="sub-title">🔭 关键观察点（5/21 周四）</div>
+    <ul>
+      <li><strong>盘前：</strong>初请失业金 + 现房销售（关注消费 + 就业边际）</li>
+      <li><strong>盘中：</strong>SPY 关注 MA50 支撑，QQQ 关注前高阻力；半导体板块（SMH）成交量是否持续放大</li>
+      <li><strong>盘后：</strong>🚨 <strong>NVDA 季报 + 业绩指引（极高优先级）</strong></li>
+    </ul>
+
+    <div class="sub-title">⚠️ 风险预警</div>
+    <ul>
+      <li>当日超买标的（RSI > 70）共 <strong>2</strong> 只：苹果、纳指100ETF</li>
+      <li>当日超卖标的（RSI < 35）共 <strong>1</strong> 只：Arista</li>
+      <li>当日上涨 13 只 / 下跌 1 只，市场宽度健康</li>
+      <li>NVDA 财报后链条扩散效应可能放大波动 ±3-5%</li>
+      <li>若 SPY 跌破 $637.44（QQQ MA50 参考），需启动 L2 应对预案</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>📊 数据来源：富途 OpenAPI（2026-05-20 收盘数据，100% 真实行情）</p>
+    <p>⚠️ 免责声明：本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
+  </div>
+
+</div>
+</body>
+</html>

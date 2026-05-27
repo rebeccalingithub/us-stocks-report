@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股大盘报告 2026年05月26日</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+       background: #f5f5f7; color: #1d1d1f; font-size: 15px; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 24px 16px 60px; }
+h1 { font-size: 2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 4px; }
+.subtitle { color: #86868b; font-size: 0.9rem; margin-bottom: 32px; }
+.section { background: #fff; border-radius: 18px; padding: 24px 28px; margin-bottom: 20px;
+           box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.section h2 { font-size: 1.15rem; font-weight: 700; color: #0071e3; margin-bottom: 16px;
+              padding-bottom: 10px; border-bottom: 1.5px solid #e5e5ea; }
+.section h3 { font-size: 1rem; font-weight: 600; margin: 14px 0 8px; color: #1d1d1f; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin-bottom: 4px; }
+.card { background: #f5f5f7; border-radius: 14px; padding: 16px 18px; }
+.card .label { font-size: 0.75rem; color: #86868b; margin-bottom: 4px; letter-spacing: .5px; text-transform: uppercase; }
+.card .price { font-size: 1.6rem; font-weight: 700; color: #1d1d1f; }
+.card .meta { font-size: 0.82rem; color: #86868b; margin-top: 6px; }
+.stock-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.stock-table th { background: #f5f5f7; padding: 9px 10px; text-align: left; font-weight: 600;
+                  color: #86868b; font-size: 0.78rem; text-transform: uppercase; letter-spacing: .5px; }
+.stock-table td { padding: 9px 10px; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
+.stock-table tr:last-child td { border-bottom: none; }
+.stock-table tr:hover td { background: #f9f9fb; }
+.badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-up { background: #e8f9ee; color: #1a7a3c; }
+.badge-down { background: #fff0f0; color: #c0392b; }
+.badge-warn { background: #fff4e0; color: #b36200; }
+.badge-buy { background: #e8f0ff; color: #0051a2; }
+.badge-neutral { background: #f2f2f7; color: #555; }
+.quant-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 6px; }
+.quant-item { background: #f5f5f7; border-radius: 10px; padding: 8px 12px; text-align: center; }
+.quant-item .ql { font-size: 0.7rem; color: #86868b; margin-bottom: 2px; }
+.quant-item .qv { font-size: 1rem; font-weight: 700; }
+.risk-item { padding: 8px 0; border-bottom: 1px solid #f2f2f2; display: flex; gap: 10px; align-items: flex-start; }
+.risk-item:last-child { border-bottom: none; }
+.risk-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+ul.analysis-list { padding-left: 20px; }
+ul.analysis-list li { margin-bottom: 6px; }
+.factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 12px; }
+.factor-card { background: #f5f5f7; border-radius: 12px; padding: 14px 16px; }
+.factor-card .ft { font-size: 0.75rem; color: #86868b; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .5px; }
+.factor-card .fv { font-size: 0.95rem; font-weight: 600; }
+.earnings-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.earnings-table th { background: #f5f5f7; padding: 8px 12px; text-align: left; font-weight: 600;
+                     color: #86868b; font-size: 0.78rem; text-transform: uppercase; }
+.earnings-table td { padding: 8px 12px; border-bottom: 1px solid #f2f2f2; }
+.stock-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1.5px solid #f2f2f2; }
+.stock-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.stock-block .sh { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.stock-block .sh .sname { font-size: 1.1rem; font-weight: 700; }
+.stock-block .sh .sticker { font-size: 0.85rem; color: #86868b; }
+.tech-text { font-size: 0.88rem; color: #444; margin: 8px 0; }
+@media(max-width:600px){
+  .cards { grid-template-columns: 1fr 1fr; }
+  .quant-grid { grid-template-columns: 1fr 1fr; }
+  .factor-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>美股大盘日报</h1>
+  <p class="subtitle">数据日期：2026年05月26日 &nbsp;|&nbsp; 数据来源：富途 OpenD（localhost:11111）&nbsp;|&nbsp; 版本：v2.2</p>
+  
+<div class="section">
+  <h2>① 大盘走势概览</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="label">SPY 标普500</div>
+      <div class="price">750.59</div>
+      <div class="meta">涨跌幅 <span style="color:#34c759;font-weight:600">+0.66%</span>
+        &nbsp;|&nbsp; RSI <span class="badge badge-warn">超买 71.48</span><br>
+        MA20 733.36 &nbsp; MA50 698.30 &nbsp; MA200 676.87
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">QQQ 纳斯达克100</div>
+      <div class="price">730.28</div>
+      <div class="meta">涨跌幅 <span style="color:#34c759;font-weight:600">+1.78%</span>
+        &nbsp;|&nbsp; RSI <span class="badge badge-warn">超买 74.59</span><br>
+        MA20 698.21 &nbsp; MA50 644.76 &nbsp; MA200 614.41
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">IWM 罗素2000</div>
+      <div class="price">290.51</div>
+      <div class="meta">涨跌幅 <span style="color:#34c759;font-weight:600">+1.89%</span>
+        &nbsp;|&nbsp; RSI <span class="badge badge-neutral">中性 58.75</span><br>
+        MA20 280.82 &nbsp; MA50 267.47 &nbsp; MA200 252.13
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">DIA 道琼斯</div>
+      <div class="price">505.25</div>
+      <div class="meta">涨跌幅 <span style="color:#ff3b30;font-weight:600">-0.17%</span>
+        &nbsp;|&nbsp; RSI <span class="badge badge-up">偏强 66.34</span><br>
+        MA20 496.79 &nbsp; MA50 482.94 &nbsp; MA200 473.96
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:14px;font-size:.88rem;color:#444">
+    <b>日内小结：</b>纳斯达克领涨（QQQ +1.78%），
+    标普同步上攻（SPY +0.66%），罗素小盘股同幅走强（IWM +1.89%）；
+    道指微跌 -0.17%，传统蓝筹分化。
+    SPY/QQQ RSI 双双进入超买区间，短期上方空间需关注获利了结压力。
+    四大指数价格均站上 MA20、MA50、MA200，中期趋势完好。
+  </p>
+</div>
+<div class="section">
+  <h2>② 市场核心定价逻辑</h2>
+  <div class="factor-grid">
+    <div class="factor-card">
+      <div class="ft">因子 1 — 半导体超级周期</div>
+      <div class="fv">MU 单日 +19.29%，财报超预期是最大催化剂。
+      内存需求受 AI 数据中心拉动，Q2 EPS 大幅超市场预期，带动半导体板块普涨。</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">因子 2 — AI/科技估值重估</div>
+      <div class="fv">QQQ RSI 74.59，价格较 MA200 溢价
+      18.9%。
+      市场持续对 AI 受益者给予高溢价，纳百短期超买但趋势未破。</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">因子 3 — 小盘股信用修复</div>
+      <div class="fv">IWM +1.89%，RSI 58.75（健康区间）。
+      利率预期边际改善，小盘股融资成本压力缓解，风险偏好回升信号。</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">因子 4 — 道指防御分化</div>
+      <div class="fv">DIA -0.17%，传统行业权重拖累道指。
+      能源/工业/金融板块资金流出，市场资金向科技与半导体集中。</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <h2>③ 华尔街多空心态</h2>
+  <ul class="analysis-list">
+    <li><b>多方信号：</b>MU 财报超预期触发半导体 ETF 全线拉升；纳百突破历史高位压制区域，动量持续；
+    小盘股 IWM 同幅上涨说明风险偏好扩散，非单一板块投机。</li>
+    <li><b>空方信号：</b>SPY RSI 71.48、QQQ RSI 74.59 均进入超买区间；
+    AAPL RSI 高达 87.71（极度超买），大盘权重股可能形成短期阻力；
+    CRCL 单日 -7.91% 暗示个股分化加剧。</li>
+    <li><b>情绪定性：</b>整体偏多但已至短期高温区，谨防 MU 巨量拉升后的情绪透支与获利了结。</li>
+  </ul>
+</div>
+<div class="section">
+  <h2>④ 本周关键催化剂日历</h2>
+  <h3>监控标的财报（Nasdaq Calendar 数据）</h3>
+  <table class="earnings-table">
+    <thead><tr><th>日期</th><th>代码</th><th>公司</th><th>时间</th></tr></thead>
+    <tbody><tr><td>2026-06-03</td><td><b>AVGO</b></td><td>Broadcom Inc.</td><td>盘后</td></tr></tbody>
+  </table>
+  <h3>宏观事件（本周）</h3>
+  <ul class="analysis-list">
+    <li>2026-05-27（今日）：关注 PCE 数据发布，若核心 PCE 超预期将重压科技股估值。</li>
+    <li>2026-05-28：美联储官员讲话窗口期，注意 Hawkish 表述风险。</li>
+    <li>2026-05-29：非农就业预览（ADP 就业报告），影响利率预期。</li>
+    <li>2026-06-03：AVGO 盘后财报（AI 基础设施关键指引），关注 AI 资本开支前瞻。</li>
+  </ul>
+</div>
+<div class="section">
+  <h2>⑤ 站外舆情监测</h2>
+  <ul class="analysis-list">
+    <li><b>AAPL（RSI 87.71，极度超买）：</b>市场热议苹果 AI 功能商业化落地进展，
+    机构纷纷上调目标价推动股价快速拉升，短线情绪过热。</li>
+    <li><b>MU +19.29%：</b>财报后社交媒体情绪极度乐观，HBM（高带宽内存）供需缺口叙事被广泛转发；
+    需警惕新闻发酵后的「buy the rumor, sell the news」。</li>
+    <li><b>CRCL -7.91%：</b>稳定币监管政策不确定性压制 Circle 股价，
+    监管舆情是当前主要负面驱动。</li>
+    <li><b>GLW +1.09%：</b>AI 光纤基础设施需求叙事持续发酵，
+    康宁受益于数据中心光互联需求扩张。</li>
+  </ul>
+</div>
+<div class="section">
+  <h2>⑥ 机构资金流前瞻</h2>
+  <ul class="analysis-list">
+    <li><b>流入方向：</b>半导体（MU/NVDA/TSM/AVGO）；AI 基础设施（GLW/ANET/IREN）；
+    纳百 ETF（QQQ 持续获得系统化资金流入，RSI 74.59）。</li>
+    <li><b>轮动信号：</b>IWM 同步上涨（+1.89%）暗示资金开始向中小盘扩散，
+    关注价值股与周期股的补涨机会。</li>
+    <li><b>流出警示：</b>CRCL/META/MSFT 相对弱势，机构可能在高位对大盘权重股进行再平衡操作。</li>
+    <li><b>下周重点：</b>AVGO 财报（2026-06-03）将决定 AI 芯片设计板块资金流向。</li>
+  </ul>
+</div>
+<div class="section">
+  <h2>⑦ 跨市场联动分析</h2>
+  <ul class="analysis-list">
+    <li><b>美股 vs 美债：</b>科技股强势上涨暗示 10Y 美债收益率压力可控，风险溢价收窄；
+    若 PCE 超预期导致收益率上行，将对 QQQ（RSI 74.59 超买）形成双重压力。</li>
+    <li><b>美股 vs 美元：</b>科技股与弱美元正相关；若 DXY 走强将压制跨国营收（AAPL/MSFT）。</li>
+    <li><b>美股 vs 亚洲市场：</b>TSM +1.93% 与台股走势高度相关；
+    MU 财报超预期将在亚洲半导体盘后产生正向溢出效应。</li>
+    <li><b>大宗商品：</b>GLW/VST 上涨折射出工业金属与电力需求的基本面支撑，关注铜价动向。</li>
+  </ul>
+</div>
+<div class="section">
+  <h2>⑧ 整体仓位与交易计划</h2>
+  <div class="factor-grid">
+    <div class="factor-card">
+      <div class="ft">总仓位建议</div>
+      <div class="fv">维持七成仓。大盘指数 RSI 双双超买，不宜追高；保留三成现金应对
+      PCE/非农可能引发的短线回调。</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">操作思路</div>
+      <div class="fv">持有核心仓 NVDA/TSM/IREN；AAPL（RSI 87.71）
+      酌情减仓 10-20%；回调至 MA20 附近再择机加仓。</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">MU 特殊处理</div>
+      <div class="fv">MU 单日 +19.29%，严重偏离 MA20（687.31）。
+      已持仓者持有观察；未持仓者等待回踩 MA20 附近再考虑建仓。</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">AVGO 财报前策略</div>
+      <div class="fv">AVGO 2026-06-03 盘后财报，当前 RSI 47.68（中性）。
+      财报前保持当前仓位，不加仓；财报后根据指引方向再决策。</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <h2>⑨ 风险提示与应急预案</h2>
+  <div class="risk-item"><div class="risk-dot" style="background:#ff3b30"></div>
+    <div><b>短期超买回调风险：</b>SPY RSI 71.48 / QQQ RSI 74.59。
+    若 PCE 数据超预期，触发 -2% ～ -3% 短线回调。应急：触及 MA20（SPY 733.36）止损。</div></div>
+  <div class="risk-item"><div class="risk-dot" style="background:#ff9500"></div>
+    <div><b>AAPL 极度超买（RSI 87.71）：</b>苹果权重占 QQQ 约 10%，若 AAPL 大幅回调将拖累大盘。
+    应急：AAPL 跌破 MA20（291.27）减仓至半仓。</div></div>
+  <div class="risk-item"><div class="risk-dot" style="background:#ff9500"></div>
+    <div><b>MU 暴涨后情绪透支：</b>单日 +19.29% 严重偏离 MA20。
+    若后续交易日出现高位放量下跌，注意整个半导体板块的联动回调。</div></div>
+  <div class="risk-item"><div class="risk-dot" style="background:#ffcc00"></div>
+    <div><b>AVGO 财报风险（2026-06-03）：</b>若 AI 资本开支指引不及预期，
+    芯片设计板块可能出现 5-10% 集体回调。</div></div>
+  <div class="risk-item"><div class="risk-dot" style="background:#34c759"></div>
+    <div><b>机会窗口：</b>若市场出现 PCE 引发的短线回调，MA50 附近（SPY 698.30）
+    是中线加仓的理想区域。</div></div>
+</div>
+  <p style="text-align:center;color:#86868b;font-size:.8rem;margin-top:20px">
+    所有价格/RSI/MA 数据均来自富途 OpenD 实时接口 · 禁止 LLM 估算 · 生成于 2026-05-27
+  </p>
+</div>
+</body>
+</html>

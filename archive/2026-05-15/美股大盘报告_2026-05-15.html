@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股大盘报告 | 2026年5月15日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .date { font-size: 1.2em; color: #a0a0a0; }
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .section h2 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, #667eea, #764ba2) 1;
+        }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { background: rgba(102, 126, 234, 0.2); font-weight: 600; color: #fff; }
+        tr:hover { background: rgba(255,255,255,0.05); }
+        .positive { color: #4ade80; font-weight: 600; }
+        .negative { color: #f87171; font-weight: 600; }
+        .fg-meter {
+            width: 100%; height: 40px;
+            background: linear-gradient(90deg, #f87171 0%, #fbbf24 25%, #4ade80 50%, #60a5fa 75%, #a78bfa 100%);
+            border-radius: 20px; position: relative; margin: 30px 0;
+        }
+        .fg-pointer {
+            position: absolute; width: 30px; height: 50px; background: #fff;
+            top: -5px; left: 62.91%; transform: translateX(-50%);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        .fg-labels { display: flex; justify-content: space-between; font-size: 0.9em; color: #a0a0a0; }
+        .fg-value {
+            text-align: center; font-size: 3em; font-weight: bold; margin: 20px 0;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .fg-rating { text-align: center; font-size: 1.5em; color: #fbbf24; font-weight: 600; margin-bottom: 20px; }
+        .topic-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px; padding: 20px; margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        .topic-title { font-size: 1.1em; font-weight: 600; margin-bottom: 10px; color: #fff; }
+        .topic-meta { display: flex; gap: 15px; font-size: 0.9em; color: #a0a0a0; margin-bottom: 10px; flex-wrap: wrap; }
+        .topic-desc { color: #c0c0c0; line-height: 1.6; }
+        .sentiment-bull { color: #4ade80; }
+        .sentiment-bear { color: #f87171; }
+        .sentiment-neutral { color: #fbbf24; }
+        .advice-box {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.15) 0%, rgba(96, 165, 250, 0.15) 100%);
+            border-radius: 12px; padding: 25px; margin-top: 20px;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+        .advice-box h3 { color: #4ade80; margin-bottom: 15px; }
+        .advice-box ul { list-style-position: inside; line-height: 2; }
+        .highlight-row { background: rgba(102, 126, 234, 0.1); }
+        .star { color: #fbbf24; }
+        .footer { text-align: center; padding: 30px; color: #808080; font-size: 0.9em; }
+        .keyword {
+            display: inline-block; background: rgba(102, 126, 234, 0.3);
+            padding: 5px 12px; border-radius: 20px; margin: 5px; font-size: 0.9em;
+        }
+        .summary-box {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.15) 0%, rgba(248, 113, 113, 0.15) 100%);
+            border-radius: 12px; padding: 25px;
+            border: 1px solid rgba(167, 139, 250, 0.3); margin-top: 20px;
+        }
+        .summary-box h3 { margin-bottom: 15px; color: #a78bfa; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 美股大盘报告</h1>
+            <div class="date">2026年5月15日</div>
+        </div>
+        
+        <div class="section">
+            <h2>📈 大盘总览</h2>
+            <table>
+                <thead>
+                    <tr><th>标的</th><th>最新价格</th><th>涨跌幅</th><th>开盘</th><th>最高</th><th>最低</th><th>昨收</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>QQQ（纳指100ETF）</strong></td><td>$708.93</td><td class="negative">-1.51%</td><td>$710.14</td><td>$715.13</td><td>$705.55</td><td>$719.79</td></tr>
+                    <tr><td><strong>SPY（标普500ETF）</strong></td><td>$739.17</td><td class="negative">-1.20%</td><td>$741.79</td><td>$743.46</td><td>$737.96</td><td>$748.17</td></tr>
+                    <tr><td><strong>GLD（黄金ETF）</strong></td><td>$417.29</td><td class="negative">-2.32%</td><td>$417.64</td><td>$419.25</td><td>$414.12</td><td>$427.21</td></tr>
+                    <tr><td><strong>USO（原油ETF）</strong></td><td>$148.23</td><td class="positive">+3.66%</td><td>$145.55</td><td>$148.41</td><td>$145.17</td><td>$143.00</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 20px; color: #a0a0a0; line-height: 1.7;">
+                💡 <strong>行情解读</strong>：今日美股整体下跌，科技股领跌。黄金出现明显回调，而原油受地缘政治因素影响逆势上涨。
+            </p>
+        </div>
+        
+        <div class="section">
+            <h2>🗓️ 本周重要行情事件日历</h2>
+            <table>
+                <thead>
+                    <tr><th>日期</th><th>事件</th><th>重要性</th><th>预期影响</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row"><td><strong>5月19日（周二）</strong></td><td>美国4月零售销售数据</td><td><span class="star">⭐⭐⭐⭐⭐</span></td><td>消费数据直接影响通胀预期和美联储决策</td></tr>
+                    <tr class="highlight-row"><td><strong>5月20日（周三）</strong></td><td>FOMC会议纪要发布</td><td><span class="star">⭐⭐⭐⭐⭐</span></td><td>市场将仔细解读加息/降息信号</td></tr>
+                    <tr><td>5月20日（周三）</td><td>美国4月成屋销售</td><td><span class="star">⭐⭐⭐</span></td><td>房地产市场健康度指标</td></tr>
+                    <tr><td>5月21日（周四）</td><td>美国初请失业金人数</td><td><span class="star">⭐⭐⭐⭐</span></td><td>劳动力市场数据</td></tr>
+                    <tr class="highlight-row"><td><strong>5月21日（周四）</strong></td><td>英伟达（NVDA）财报</td><td><span class="star">⭐⭐⭐⭐⭐</span></td><td>AI龙头财报，影响整个科技板块情绪</td></tr>
+                    <tr class="highlight-row"><td><strong>5月22日（周五）</strong></td><td>美国4月核心PCE物价指数</td><td><span class="star">⭐⭐⭐⭐⭐</span></td><td>美联储最关注的通胀指标</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>🔥 Reddit热门追踪</h2>
+            <h3 style="margin: 20px 0 15px; color: #667eea;">🎯 热议话题TOP3</h3>
+            
+            <div class="topic-card">
+                <div class="topic-title">1. 英伟达财报前瞻：AI狂热是否已见顶？</div>
+                <div class="topic-meta">
+                    <span>板块：r/wallstreetbets, r/stocks</span>
+                    <span>讨论热度：🔥🔥🔥🔥🔥</span>
+                    <span>情绪：<span class="sentiment-neutral">分歧（多空激战）</span></span>
+                </div>
+                <div class="topic-desc">核心观点：多头看好Q2营收指引再超预期，空头担心估值泡沫已过大</div>
+            </div>
+            
+            <div class="topic-card">
+                <div class="topic-title">2. 原油暴涨：地缘冲突升级vs供需平衡</div>
+                <div class="topic-meta">
+                    <span>板块：r/options, r/wallstreetbets</span>
+                    <span>讨论热度：🔥🔥🔥🔥</span>
+                    <span>情绪：<span class="sentiment-bull">看涨</span></span>
+                </div>
+                <div class="topic-desc">核心观点：中东局势紧张推动油价突破关键阻力位，期权市场Call单激增</div>
+            </div>
+            
+            <div class="topic-card">
+                <div class="topic-title">3. 黄金回调：技术性调整还是趋势反转？</div>
+                <div class="topic-meta">
+                    <span>板块：r/investing, r/stocks</span>
+                    <span>讨论热度：🔥🔥🔥</span>
+                    <span>情绪：<span class="sentiment-neutral">谨慎</span></span>
+                </div>
+                <div class="topic-desc">核心观点：美联储降息预期延后，美元走强施压金价，但长期避险需求仍在</div>
+            </div>
+            
+            <h3 style="margin: 30px 0 15px; color: #667eea;">💹 热议股票TOP5</h3>
+            <table>
+                <thead>
+                    <tr><th>股票</th><th>热议程度</th><th>主要情绪</th><th>讨论焦点</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>NVDA（英伟达）</strong></td><td>🔥🔥🔥🔥🔥</td><td class="sentiment-bull">极度看涨</td><td>财报业绩、AI需求、估值</td></tr>
+                    <tr><td><strong>TSLA（特斯拉）</strong></td><td>🔥🔥🔥🔥</td><td class="sentiment-neutral">分歧</td><td>Robotaxi发布会、销量预期</td></tr>
+                    <tr><td><strong>AAPL（苹果）</strong></td><td>🔥🔥🔥</td><td class="sentiment-bull">中性偏多</td><td>AI功能、中国市场、回购计划</td></tr>
+                    <tr><td><strong>MSFT（微软）</strong></td><td>🔥🔥🔥</td><td class="sentiment-bull">看涨</td><td>Copilot商业化进展、云业务</td></tr>
+                    <tr><td><strong>OXY（西方石油）</strong></td><td>🔥🔥🔥</td><td class="sentiment-bull">看涨</td><td>油价上涨、巴菲特增持</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>⚡ 热门事件合约精选</h2>
+            <table>
+                <thead>
+                    <tr><th>事件</th><th>时间节点</th><th>标的合约</th><th>胜率预期</th><th>赔率</th><th>策略建议</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>英伟达财报

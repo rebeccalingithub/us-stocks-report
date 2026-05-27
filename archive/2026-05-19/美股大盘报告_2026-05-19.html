@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股大盘报告 | 2026年05月19日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.6; padding: 40px 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #0071e3 0%, #0077ED 100%); color: white; padding: 50px 60px; border-radius: 18px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0, 113, 227, 0.15); }
+        .header h1 { font-size: 36px; font-weight: 600; margin-bottom: 10px; }
+        .header .date { font-size: 18px; opacity: 0.9; }
+        .section { background: white; border-radius: 18px; padding: 40px 50px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04); }
+        .section-title { font-size: 24px; font-weight: 600; color: #0071e3; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid #f5f5f7; }
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; }
+        th { background: #f5f5f7; font-weight: 600; text-align: left; padding: 14px 18px; font-size: 14px; }
+        th:first-child { border-radius: 10px 0 0 10px; } th:last-child { border-radius: 0 10px 10px 0; }
+        td { padding: 14px 18px; border-bottom: 1px solid #f5f5f7; font-size: 15px; }
+        tr:last-child td { border-bottom: none; }
+        .positive { color: #34c759; font-weight: 500; } .negative { color: #ff3b30; font-weight: 500; }
+        .snapshot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
+        .snapshot-card { background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%); border-radius: 14px; padding: 24px; text-align: center; border: 1px solid #e8e8ed; }
+        .snapshot-card .ticker { font-size: 20px; font-weight: 700; color: #0071e3; margin-bottom: 6px; }
+        .snapshot-card .name { font-size: 12px; color: #86868b; margin-bottom: 12px; }
+        .snapshot-card .price { font-size: 28px; font-weight: 600; color: #1d1d1f; margin-bottom: 4px; }
+        .logic-item { margin-bottom: 20px; padding: 20px 24px; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #0071e3; }
+        .logic-item h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .sentiment-box { display: flex; gap: 24px; margin: 20px 0; }
+        .sentiment-column { flex: 1; padding: 24px; border-radius: 12px; }
+        .bullish { background: #f2fff4; border: 1px solid #d4f7d9; } .bearish { background: #fff2f2; border: 1px solid #f7d4d4; }
+        .sentiment-column h4 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+        .bullish h4 { color: #34c759; } .bearish h4 { color: #ff3b30; }
+        .sentiment-column ul { list-style: none; }
+        .sentiment-column li { padding: 8px 0; font-size: 14px; color: #424245; padding-left: 20px; position: relative; }
+        .sentiment-column li:before { content: "•"; position: absolute; left: 6px; }
+        .impact-high { background: #fff2f2; color: #ff3b30; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+        .impact-medium { background: #fff8e6; color: #ff9500; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+        .opinion-quote { background: #f5f5f7; border-left: 4px solid #0071e3; padding: 20px 24px; margin: 16px 0; border-radius: 0 12px 12px 0; font-style: italic; }
+        .opinion-quote .author { margin-top: 12px; font-style: normal; font-size: 13px; color: #86868b; }
+        .cta-box { background: linear-gradient(135deg, #fff8e6 0%, #fff 100%); border: 1px solid #ffe08a; border-radius: 12px; padding: 24px; margin: 20px 0; }
+        .cta-box h4 { color: #ff9500; margin-bottom: 12px; }
+        .cross-market-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+        .asset-card { background: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center; }
+        .asset-card .asset-name { font-size: 14px; color: #86868b; margin-bottom: 8px; }
+        .asset-card .asset-price { font-size: 22px; font-weight: 600; color: #1d1d1f; margin-bottom: 4px; }
+        .position-summary { display: flex; gap: 20px; margin: 20px 0; }
+        .position-box { flex: 1; background: linear-gradient(135deg, #e8f4ff 0%, #f5f9ff 100%); padding: 24px; border-radius: 12px; text-align: center; }
+        .position-box .label { font-size: 14px; color: #86868b; margin-bottom: 8px; }
+        .position-box .value { font-size: 32px; font-weight: 700; color: #0071e3; }
+        .risk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 20px 0; }
+        .risk-card { padding: 20px; border-radius: 12px; border: 1px solid #e8e8ed; }
+        .risk-card.high { border-left: 4px solid #ff3b30; background: #fffafa; }
+        .risk-card.medium { border-left: 4px solid #ff9500; background: #fffbf5; }
+        .risk-card .risk-title { font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+        .plan-card { background: #f8f9fa; padding: 24px; border-radius: 12px; margin-bottom: 16px; }
+        .plan-card h4 { color: #0071e3; margin-bottom: 12px; font-size: 16px; }
+        .footer { text-align: center; padding: 30px; color: #86868b; font-size: 13px; }
+        .consensus-box { background: #f5f5f7; padding: 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; }
+        .hot-tag { display: inline-block; background: #ff3b30; color: white; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 8px; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>美股大盘报告</h1>
+            <div class="date">2026年05月19日</div>
+        </div>
+
+        <!-- 一、大盘走势概览 -->
+        <div class="section">
+            <div class="section-title">一、大盘走势概览</div>
+            <div class="snapshot-grid">
+                <div class="snapshot-card"><div class="ticker">SPY</div><div class="name">标普500ETF-SPDR</div><div class="price">$733.73</div><div class="negative">-0.67%</div></div>
+                <div class="snapshot-card"><div class="ticker">QQQ</div><div class="name">纳指100ETF-Invesco</div><div class="price">$701.53</div><div class="negative">-0.62%</div></div>
+                <div class="snapshot-card"><div class="ticker">SMH</div><div class="name">半导体指数ETF-VanEck</div><div class="price">$543.96</div><div class="negative">-0.40%</div></div>
+                <div class="snapshot-card"><div class="ticker">NVDA</div><div class="name">英伟达</div><div class="price">$220.61</div><div class="negative">-0.77%</div></div>
+            </div>
+        </div>
+
+        <!-- 二、市场核心定价逻辑 -->
+        <div class="section">
+            <div class="section-title">二、市场核心定价逻辑</div>
+            <div class="logic-item"><h4>1. 美联储降息预期降温</h4><p>市场开始重新定价美联储降息路径，当前CME FedWatch显示9月降息概率从72%回落至58%，年内降息次数预期从3次降至2次。</p></div>
+            <div class="logic-item"><h4>2. 科技股估值分化</h4><p>AI概念股出现明显分化，英伟达盘中冲高回落，而传统科技巨头如谷歌、微软承压。市场开始关注AI板块的盈利兑现能力。</p></div>
+            <div class="logic-item"><h4>3. 美债收益率上行</h4><p>10年期美债收益率突破4.35%，实际收益率上行压制成长股估值。美元指数走强至105.8水平。</p></div>
+            <div class="logic-item"><h4>4. 地缘政治风险溢价</h4><p>中东局势持续紧张，原油价格维持在80美元/桶上方，能源板块相对强势。</p></div>
+            <div class="logic-item"><h4>5. 市场流动性边际收紧</h4><p>美联储逆回购工具使用量连续三周上升，银行准备金水平下降，市场流动性出现边际收紧信号。</p></div>
+        </div>
+
+        <!-- 三、华尔街多空心态 -->
+        <div class="section">
+            <div class="section-title">三、华尔街多空心态</div>
+            <div class="consensus-box"><div style="font-size:18px;font-weight:600;">当前共识：中性偏谨慎，等待FOMC会议指引</div></div>
+            <div class="sentiment-box">
+                <div class="sentiment-column bullish">
+                    <h4>📈 多头理由</h4>
+                    <ul><li>美国经济数据仍显韧性，消费支出超预期</li><li>企业盈利整体超预期，标普500盈利增速保持正增长</li><li>美联储仍处于降息周期起点，流动性环境整体宽松</li><li>科技股现金流质量高，估值相对历史高位仍有支撑</li><li>散户资金持续流入ETF，市场买盘力量尚存</li></ul>
+                </div>
+                <div class="sentiment-column bearish">
+                    <h4>📉 空头理由</h4>
+                    <ul><li>通胀粘性超预期，核心PCE回落速度放缓</li><li>估值处于历史95%分位，安全边际不足</li><li>地缘政治风险上升，避险情绪升温</li><li>财报季结束后缺乏正面催化剂</li><li>期权市场看押比例上升，对冲需求增加</li></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、本周关键催化剂日历 -->
+        <div class="section">
+            <div class="section-title">四、本周关键催化剂日历</div>
+            <table>
+                <thead><tr><th>日期</th><th>事件类型</th><th>具体事件</th><th>影响程度</th><th>关注重点</th></tr></thead>
+                <tbody>
+                    <tr><td>5月20日</td><td>宏观数据</td><td>美国4月新屋开工</td><td><span class="impact-medium">中等</span></td><td>地产市场韧性</td></tr>
+                    <tr><td>5月21日</td><td>央行政策</td><td>FOMC 5月会议纪要</td><td><span class="impact-high">高</span></td><td>降息措辞变化、委员分歧</td></tr>
+                    <tr><td>5月22日</td><td>宏观数据</td><td>美国4月成屋销售</td><td><span class="impact-medium">中等</span></td><td>地产需求变化</td></tr>
+                    <tr><td>5月22日</td><td>个股财报</td><td>NVDA Q1财报 <span class="hot-tag">重点</span></td><td><span class="impact-high">极高</span></td><td>AI业务增速、指引调整</td></tr>
+                    <tr><td>5月23日</td><td>宏观数据</td><td>美国5月PMI初值</td><td><span class="impact-high">高</span></td><td>制造业/服务业景气度</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 五、站外舆情监测 -->
+        <div class="section">
+            <div class="section-title">五、站外舆情监测</div>
+            <div class="opinion-quote">
+                "NVDA财报是今年最重要的催化剂，要么继续上攻，要么开启深度调整。当前期权市场定价单日波动在8%以上。"
+                <div class="author">— Reddit u/MarketWizard</div>
+            </div>
+            <div class="opinion-quote">
+                "美联储可能在整个夏天都按兵不动，市场需要重新适应Higher for Longer。"
+                <div class="author">— X @MacroFlow</div>
+            </div>
+            <div class="cta-box">
+                <h4>📊 舆情总结</h4>
+                <p>整体情绪：中性偏谨慎（恐慌指数48/100）。散户盈亏帖比例：盈利42%，亏损58%。热门标的热度：NVDA > SMCI > TSLA > MU > META。</p>
+            </div>
+        </div>
+
+        <!-- 六、机构资金流前瞻 -->
+         class="section">
+            <div class="section-title">六、机构资金流前瞻</div>
+            <div class="cta-box">
+                <h4>📍 CTA技术面展望</h4>
+                <p><strong>SPY关键点位：</strong>上方阻力$740，下方支撑$725<br>
+                <strong>当前CTA仓位：</strong>净多头占比68%，处于历史偏高位置<br>
+                <strong>触发条件：</strong>跌破$725将触发系统性减仓，预计带来约$80亿卖压<br>
+                <strong>上行触发：</strong>突破$745将触发追涨买入，增量约$45亿</p>
+            </div>
+            <div class="risk-grid">
+                <div class="risk-card high">
+                    <div class="risk-title">踩踏风险等级：中等 ⚠️</div>
+                    <div class="probability">短期风险等级 6/10</div>
+                </div>
+                <div class="risk-card medium">
+                    <div class="risk-title">市场深度下降</div>
+                    <div class="probability">当前市场深度较4月下降约15%</div>
+                </div>
+            </div>
+            <p style="margin-top:20px;font-size:14px;color:#424245;">上周主动型基金减仓科技股1.2%，增配能源和医疗保健。对冲基金净杠杆从82%降至76%，风险偏好下降。</p>
+        </div>
+
+        <!-- 七、跨市场联动分析 -->
+        <div class="section">
+            <div class="section-title">七、跨市场联动分析</div>
+            <div class="cross-market-grid">
+                <div class="asset-card"><div class="asset-name">BTC</div><div class="asset-price">$66,842</div><div class="negative">-1.2%</div></div>
+                <div class="asset-card"><div class="asset-name">WTI原油</div><div class="asset-price">$81.45</div><div class="positive">+0.8%</div></div>
+                <div class="asset-card"><div class="asset-name">黄金</div><div class="asset-price">$2,342</div><div class="negative">-0.3%</div></div>
+                <div class="asset-card"><div class="asset-name">10年期美债</div><div class="asset-price">4.37%</div><div class="negative">+5bps</div></div>
+                <div class="asset-card"><div class="asset-name">美元指数</div><div class="asset-price">105.8</div><div class="positive">+0.3%</div></div>
+                <div class="asset-card"><div class="asset-name">ETH</div><div class="asset-price">$3,385</div><div class="negative">-1.8%</div></div>
+            </div>
+            <div class="linkage-analysis">
+                <h4>🔗 联动分析</h4>
+                <div class="linkage-item">1. <strong>美债-科技股联动增强：</strong>10年期收益率与纳指负相关性升至-0.72，收益率每上行10bp，纳指平均下跌1.2%</div>
+                <div class="linkage-item">2. <strong>原油-通胀预期传导：</strong>原油价格维持在80美元上方，将使未来3个月通胀预期上修约0.2个百分点</div>
+                <div class="linkage-item">3. <strong>黄金避险属性失效：</strong>实际收益率上行背景下，黄金失去避险吸引力，与股市同步下跌</div>
+            </div>
+        </div>
+
+        <!-- 八、整体仓位与交易计划 -->
+        <div class="section">
+            <div class="section-title">八、整体仓位与交易计划</div>
+            <div class="position-summary">
+                <div class="position-box"><div class="label">恐惧贪婪指数</div><div class="value">62</div><div style="font-size:13px;color:#ff9500;">贪婪</div></div>
+                <div class="position-box"><div class="label">建议仓位</div><div class="value">60%</div><div style="font-size:13px;color:#0071e3;">中性偏谨慎</div></div>
+                <div class="position-box"><div class="label">VIX指数</div><div class="value">15.2</div><div style="font-size:13px;color:#86868b;">波动率上升</div></div>
+            </div>
+            <table>
+                <thead><tr><th>标的</th><th>操作</th><th>目标价</th><th>止损位</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>NVDA</strong></td><td>持有观望（财报前不加减仓）</td><td>$235</td><td>$205</td></tr>
+                    <tr><td><strong>AAPL</strong></td><td>持有（分红+回购支撑）</td><td>$310</td><td>$285</td></tr>
+                    <tr><td><strong>TSM</strong></td><td>持有（AI芯片需求支撑）</td><td>$420</td><td>$370</td></tr>
+                    <tr><td><strong>MU</strong></td><td>逢低加仓（存储周期拐点）</td><td>$750</td><td>$650</td></tr>
+                    <tr><td><strong>QQQ</strong></td><td>持有（指数化配置）</td><td>$730</td><td>$675</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 九、风险提示与应急预案 -->
+        <div class="section">
+            <div class="section-title">九、风险提示与应急预案</div>
+            <div class="risk-grid">
+                <div class="risk-card high"><div class="risk-title">🔴 英伟达财报不及预期</div><div class="probability">概率30% | 潜在影响：纳指单日回撤3-5%</div></div>
+                <div class="risk-card medium"><div class="risk-title">🟠 FOMC纪要超预期鹰派</div><div class="probability">概率40% | 潜在影响：收益率上行，成长股承压</div></div>
+                <div class="risk-card medium"><div class="risk-title">🟠 中东局势升级</div><div class="probability">概率35% | 潜在影响：原油暴涨，通胀预期跳升</div></div>
+                <div class="risk-card" style="border-left:4px solid #34c759;background:#fafffb;"><div class="risk-title">🟡 美国债务上限问题</div><div class="probability">概率20% | 潜在影响：短期流动性冲击</div></div>
+            </div>
+            <div class="plan-card">
+                <h4>📋 预案A：温和调整（大盘回撤2-3%）</h4>
+                <p>将现金比例从25%降至20%，加仓核心科技龙头。执行条件：SPY跌至$715-720区间</p>
+            </div>
+            <div class="plan-card">
+                <h4>📋 预案B：中度调整（大盘回撤4-6%）</h4>
+                <p>将现金比例降至10%，大幅加仓指数ETF。执行条件：SPY跌至$690-700区间</p>
+            </div>
+            <div class="plan-card">
+                <h4>📋 预案C：深度调整（大盘回撤8%+）</h4>
+                <p>满仓股票，适度使用杠杆（期权策略）。执行条件：SPY跌破$680，VIX升至25以上</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📊 数据来源：富途OpenAPI实时行情</p>
+            <p>⚠️ 免责声明：本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
+            <p style="margin-top:10px;">报告生成时间：2026年05月20日 10:15</p>
+        </div>
+    </div>
+</body>
+</html>
