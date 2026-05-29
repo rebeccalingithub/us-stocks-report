@@ -77,10 +77,27 @@ ul.analysis-list li { margin-bottom: 6px; }
 .tech-text { font-size: 0.88rem; color: #444; margin: 8px 0; }
 .hot-tag { display: inline-block; background: #fff4e0; color: #b36200; padding: 1px 7px;
   border-radius: 10px; font-size: 0.72rem; font-weight: 600; margin-left: 6px; }
+/* Deep Analysis Panel */
+.detail-btn { display:inline-flex; align-items:center; gap:4px; padding:3px 12px;
+  border:1.5px solid #0071e3; border-radius:20px; background:transparent;
+  color:#0071e3; font-size:.76rem; font-weight:600; cursor:pointer;
+  margin-left:auto; transition:all .2s; white-space:nowrap; }
+.detail-btn:hover, .detail-btn.active { background:#0071e3; color:#fff; }
+.detail-panel { display:none; margin-top:14px; border-top:1.5px dashed #e5e5ea; padding-top:14px; }
+.dp-section { margin-bottom:16px; }
+.dp-section:last-child { margin-bottom:0; }
+.dp-title { font-size:.72rem; font-weight:700; color:#86868b; text-transform:uppercase;
+  letter-spacing:.5px; margin-bottom:8px; }
+.dp-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.dp-card { background:#f5f5f7; border-radius:10px; padding:9px 12px; }
+.dp-label { font-size:.66rem; color:#86868b; margin-bottom:3px; text-transform:uppercase; letter-spacing:.4px; }
+.dp-val { font-size:.98rem; font-weight:700; line-height:1.2; }
+.dp-sub { font-size:.68rem; color:#86868b; margin-top:2px; line-height:1.3; }
 @media(max-width:600px){
   .cards { grid-template-columns: 1fr 1fr; }
   .quant-grid { grid-template-columns: 1fr 1fr; }
   .factor-grid { grid-template-columns: 1fr; }
+  .dp-cards { grid-template-columns: 1fr 1fr; }
   h1 { font-size: 1.5rem; }
   .fg-wrap { flex-direction: column; }
 }
@@ -198,7 +215,7 @@ ul.analysis-list li { margin-bottom: 6px; }
   <ul class="analysis-list">
     <li><b>流入：</b>半导体（MU/NVDA/TSM/AVGO/MRVL）；AI 基础设施（GLW/ANET/IREN/COHR）；纳百 ETF 持续获系统性资金。</li>
     <li><b>轮动信号：</b>IWM <span style="color:#34c759;font-weight:600">+0.57%</span> 暗示资金向中小盘扩散；太空经济板块（RKLB/ASTS/RDW）出现在热议列表。</li>
-    <li><b>流出警示：</b>CRCL/META/MSFT 相对弱势，机构可能对权重股做再平衡。</li>
+    <li><b>流出警示：</b>META/MSFT 相对弱势，机构可能对权重股做再平衡。</li>
     <li><b>下周重点：</b>AVGO 财报（2026-06-03）将决定 AI 芯片设计板块资金流向。</li>
   </ul>
 </div>

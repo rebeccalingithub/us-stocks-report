@@ -77,10 +77,27 @@ ul.analysis-list li { margin-bottom: 6px; }
 .tech-text { font-size: 0.88rem; color: #444; margin: 8px 0; }
 .hot-tag { display: inline-block; background: #fff4e0; color: #b36200; padding: 1px 7px;
   border-radius: 10px; font-size: 0.72rem; font-weight: 600; margin-left: 6px; }
+/* Deep Analysis Panel */
+.detail-btn { display:inline-flex; align-items:center; gap:4px; padding:3px 12px;
+  border:1.5px solid #0071e3; border-radius:20px; background:transparent;
+  color:#0071e3; font-size:.76rem; font-weight:600; cursor:pointer;
+  margin-left:auto; transition:all .2s; white-space:nowrap; }
+.detail-btn:hover, .detail-btn.active { background:#0071e3; color:#fff; }
+.detail-panel { display:none; margin-top:14px; border-top:1.5px dashed #e5e5ea; padding-top:14px; }
+.dp-section { margin-bottom:16px; }
+.dp-section:last-child { margin-bottom:0; }
+.dp-title { font-size:.72rem; font-weight:700; color:#86868b; text-transform:uppercase;
+  letter-spacing:.5px; margin-bottom:8px; }
+.dp-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.dp-card { background:#f5f5f7; border-radius:10px; padding:9px 12px; }
+.dp-label { font-size:.66rem; color:#86868b; margin-bottom:3px; text-transform:uppercase; letter-spacing:.4px; }
+.dp-val { font-size:.98rem; font-weight:700; line-height:1.2; }
+.dp-sub { font-size:.68rem; color:#86868b; margin-top:2px; line-height:1.3; }
 @media(max-width:600px){
   .cards { grid-template-columns: 1fr 1fr; }
   .quant-grid { grid-template-columns: 1fr 1fr; }
   .factor-grid { grid-template-columns: 1fr; }
+  .dp-cards { grid-template-columns: 1fr 1fr; }
   h1 { font-size: 1.5rem; }
   .fg-wrap { flex-direction: column; }
 }
@@ -98,6 +115,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">AAPL</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 88.21</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff3b30">减仓</b></span>
+    <button class="detail-btn" onclick="toggleDetail('AAPL')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -117,6 +135,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">262.38</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">343.76</div></div>
   </div>
+  <div class="detail-panel" id="detail-AAPL">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+5.8%</div>
+        <div class="dp-sub">MA20 = 295.41</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+19.1%</div>
+        <div class="dp-sub">MA200 = 262.38</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">48.2M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「减仓」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">🔴 <b>RSI 88.2 严重超买</b>：短线回调风险高，建议减仓或等回踩再入</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -124,6 +211,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">GOOG</span>
     <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-neutral">中性 41.89</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('GOOG')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -143,6 +231,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">298.57</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">405.43</div></div>
   </div>
+  <div class="detail-panel" id="detail-GOOG">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#ff9500">震荡整理</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#ff3b30">-0.5%</div>
+        <div class="dp-sub">MA20 = 387.91</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+29.3%</div>
+        <div class="dp-sub">MA200 = 298.57</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">20.8M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">✅ <b>RSI 41.9 健康区间</b>：动能未过热，是加仓的较佳时机</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -150,6 +307,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">TSM</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-neutral">中性 55.36</span>
     <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('TSM')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -169,6 +327,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">319.50</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">467.35</div></div>
   </div>
+  <div class="detail-panel" id="detail-TSM">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+4.6%</div>
+        <div class="dp-sub">MA20 = 406.03</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+33.0%</div>
+        <div class="dp-sub">MA200 = 319.50</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">8.9M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">牛市价差 (Bull Call Spread)</div>
+        <div class="dp-sub">多头趋势+低IV，控制成本</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <table class="stock-table" style="margin-top:6px"><thead><tr><th>策略</th><th>到期日</th><th>合约</th><th>最大盈亏</th><th>胜率</th></tr></thead><tbody><tr><td style="font-size:.82rem">牛市看跌价差 Bull Put Spread</td><td style="color:#86868b;font-size:.78rem">2026-06-05</td><td style="color:#86868b;font-size:.78rem">SELL PUT $410 | BUY PUT $405</td><td><b style="color:#34c759">+$130</b> / <span style="color:#ff3b30">-$370</span></td><td><b>72%</b></td></tr></tbody></table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td><b style="color:#ff3b30">卖&nbsp;PUT</b></td><td>$392</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#34c759;font-weight:600">+$156</td></tr><tr><td><b style="color:#ff3b30">买&nbsp;PUT</b></td><td>$385</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#ff3b30;font-weight:600">$-89</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">✅ <b>RSI 55.4 健康区间</b>：动能未过热，是加仓的较佳时机</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 33.0%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -176,6 +403,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">MU</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 72.68</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('MU')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -195,6 +423,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">334.38</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">1015.87</div></div>
   </div>
+  <div class="detail-panel" id="detail-MU">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+26.7%</div>
+        <div class="dp-sub">MA20 = 728.77</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+176.2%</div>
+        <div class="dp-sub">MA200 = 334.38</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">49.7M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td><b style="color:#ff3b30">卖&nbsp;PUT</b> <span class="hot-tag">大单</span></td><td>$775</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#34c759;font-weight:600">+$714</td></tr><tr><td><b style="color:#ff3b30">买&nbsp;PUT</b></td><td>$748</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#ff3b30;font-weight:600">$-396</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">🟡 <b>RSI 72.7 超买区间</b>：动能过热，追涨需谨慎，等 RSI 回落至 60 以下</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 176.2%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -202,6 +499,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">NVDA</span>
     <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-neutral">中性 52.51</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('NVDA')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -221,6 +519,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">187.50</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">224.96</div></div>
   </div>
+  <div class="detail-panel" id="detail-NVDA">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#ff9500">震荡整理</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#ff3b30">-0.3%</div>
+        <div class="dp-sub">MA20 = 214.88</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+14.3%</div>
+        <div class="dp-sub">MA200 = 187.50</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">144.0M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">✅ <b>RSI 52.5 健康区间</b>：动能未过热，是加仓的较佳时机</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -228,6 +595,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">TSLA</span>
     <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-up">偏强 61.17</span>
     <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('TSLA')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -247,6 +615,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">411.65</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">464.21</div></div>
   </div>
+  <div class="detail-panel" id="detail-TSLA">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#ff9500">震荡整理</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+5.6%</div>
+        <div class="dp-sub">MA20 = 418.69</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+7.4%</div>
+        <div class="dp-sub">MA200 = 411.65</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">32.4M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">✅ <b>RSI 61.2 健康区间</b>：动能未过热，是加仓的较佳时机</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -254,6 +691,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">MSFT</span>
     <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-neutral">中性 55.45</span>
     <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('MSFT')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -273,6 +711,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">456.79</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">448.34</div></div>
   </div>
+  <div class="detail-panel" id="detail-MSFT">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#ff9500">震荡整理</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+2.9%</div>
+        <div class="dp-sub">MA20 = 414.80</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#ff3b30">-6.5%</div>
+        <div class="dp-sub">MA200 = 456.79</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">47.3M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">⚠️ <b>跌破 MA200</b>：长期趋势偏弱，暂缓新增仓位，等均线修复</li><li style="margin-bottom:5px">✅ <b>RSI 55.5 健康区间</b>：动能未过热，是加仓的较佳时机</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -280,6 +787,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">QQQ</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 72.36</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('QQQ')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -299,32 +807,171 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">616.02</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">809.16</div></div>
   </div>
+  <div class="detail-panel" id="detail-QQQ">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+4.3%</div>
+        <div class="dp-sub">MA20 = 705.51</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+19.4%</div>
+        <div class="dp-sub">MA200 = 616.02</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">32.8M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    <div style="background:#fff4e0;border-radius:8px;padding:9px 13px;margin-top:8px;font-size:.82rem">⚡ <b>Gamma 暴露提示：</b>持有行权价接近现价（±5%）的期权，价格每波动 1% Gamma 效应会加速盈亏变化，请注意仓位风险。</div>
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td><b style="color:#34c759">卖&nbsp;CALL</b> <span class="hot-tag">大单</span></td><td>$723</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#ff3b30;font-weight:600">$-338</td></tr><tr><td><b style="color:#34c759">买&nbsp;CALL</b> <span class="hot-tag">大单</span></td><td>$717</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#34c759;font-weight:600">+$380</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">🟡 <b>RSI 72.4 超买区间</b>：动能过热，追涨需谨慎，等 RSI 回落至 60 以下</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
-    <span class="sname">Circle Internet</span>
-    <span class="sticker">CRCL</span>
-    <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-neutral">中性 46.25</span>
+    <span class="sname">Redwire Space</span>
+    <span class="sticker">RDW</span>
+    <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 95.38</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('RDW')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
     <tbody><tr>
-      <td><b>108.24</b></td>
-      <td><span style="color:#34c759;font-weight:600">+5.46%</span></td>
-      <td>46.25</td>
-      <td>113.50</td>
-      <td>106.32</td>
-      <td>103.06</td>
+      <td><b>25.90</b></td>
+      <td><span style="color:#34c759;font-weight:600">+7.92%</span></td>
+      <td>95.38</td>
+      <td>13.82</td>
+      <td>11.25</td>
+      <td>9.24</td>
     </tr></tbody>
   </table>
-  <p class="tech-text">价格 108.24 跌破 MA20（113.50）和 MA50（106.32），RSI 46.25 偏弱。稳定币监管压制，暂时观察。</p>
+  <p class="tech-text">RSI 95.38，价格 25.90 vs MA200（9.24）。航天制造+太空AI基础设施，与 RKLB/ASTS 形成板块共振。RSI 超买，高位注意回调。</p>
   <div class="quant-grid">
-    <div class="quant-item"><div class="ql">现价</div><div class="qv">108.24</div></div>
-    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">106.32</div></div>
-    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">103.06</div></div>
-    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">113.65</div></div>
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">25.90</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">11.25</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">9.24</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">28.49</div></div>
   </div>
+  <div class="detail-panel" id="detail-RDW">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+87.4%</div>
+        <div class="dp-sub">MA20 = 13.82</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+180.3%</div>
+        <div class="dp-sub">MA200 = 9.24</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">86.7M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">🔴 <b>RSI 95.4 严重超买</b>：短线回调风险高，建议减仓或等回踩再入</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 180.3%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -332,6 +979,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">VST</span>
     <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-neutral">中性 55.08</span>
     <span style="margin-left:6px">操作建议：<b style="color:#666">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('VST')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -351,6 +999,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">173.15</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">168.29</div></div>
   </div>
+  <div class="detail-panel" id="detail-VST">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#ff9500">震荡整理</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+6.0%</div>
+        <div class="dp-sub">MA20 = 151.16</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#ff3b30">-7.4%</div>
+        <div class="dp-sub">MA200 = 173.15</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">3.6M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">⚠️ <b>跌破 MA200</b>：长期趋势偏弱，暂缓新增仓位，等均线修复</li><li style="margin-bottom:5px">✅ <b>RSI 55.1 健康区间</b>：动能未过热，是加仓的较佳时机</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -358,6 +1075,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">IREN</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-neutral">中性 56.74</span>
     <span style="margin-left:6px">操作建议：<b style="color:#34c759">加仓</b></span>
+    <button class="detail-btn" onclick="toggleDetail('IREN')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -377,6 +1095,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">45.46</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">70.45</div></div>
   </div>
+  <div class="detail-panel" id="detail-IREN">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+15.4%</div>
+        <div class="dp-sub">MA20 = 55.51</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+40.9%</div>
+        <div class="dp-sub">MA200 = 45.46</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">46.9M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">牛市价差 (Bull Call Spread)</div>
+        <div class="dp-sub">多头趋势+低IV，控制成本</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「加仓」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">✅ <b>RSI 56.7 健康区间</b>：动能未过热，是加仓的较佳时机</li><li style="margin-bottom:5px">🔍 <b>单日大跌 -5.6%</b>：需确认是否跌破关键支撑再做决策</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 40.9%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -384,25 +1171,95 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">GLW</span>
     <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-neutral">中性 50.26</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('GLW')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
     <tbody><tr>
-      <td><b>182.97</b></td>
-      <td><span style="color:#ff3b30;font-weight:600">-4.15%</span></td>
+      <td><b>182.69</b></td>
+      <td><span style="color:#ff3b30;font-weight:600">-4.16%</span></td>
       <td>50.26</td>
-      <td>184.94</td>
-      <td>165.97</td>
-      <td>111.54</td>
+      <td>184.66</td>
+      <td>165.69</td>
+      <td>111.26</td>
     </tr></tbody>
   </table>
   <p class="tech-text">三线多头排列，RSI 50.26。AI 数据中心光互联需求带动光纤业务超预期，价格较 MA200 溢价显著。</p>
   <div class="quant-grid">
-    <div class="quant-item"><div class="ql">现价</div><div class="qv">182.97</div></div>
-    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">165.97</div></div>
-    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">111.54</div></div>
-    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">192.12</div></div>
+    <div class="quant-item"><div class="ql">现价</div><div class="qv">182.69</div></div>
+    <div class="quant-item"><div class="ql">安全边际</div><div class="qv">165.69</div></div>
+    <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">111.26</div></div>
+    <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">191.82</div></div>
   </div>
+  <div class="detail-panel" id="detail-GLW">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#ff9500">震荡整理</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#ff3b30">-1.1%</div>
+        <div class="dp-sub">MA20 = 184.66</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+64.2%</div>
+        <div class="dp-sub">MA200 = 111.26</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">9.7M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">✅ <b>RSI 50.3 健康区间</b>：动能未过热，是加仓的较佳时机</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 64.2%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -410,6 +1267,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">AVGO</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-neutral">中性 56.65</span>
     <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('AVGO')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -429,6 +1287,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">350.71</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">469.24</div></div>
   </div>
+  <div class="detail-panel" id="detail-AVGO">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+1.2%</div>
+        <div class="dp-sub">MA20 = 421.44</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+21.6%</div>
+        <div class="dp-sub">MA200 = 350.71</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">17.9M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">牛市价差 (Bull Call Spread)</div>
+        <div class="dp-sub">多头趋势+低IV，控制成本</div>
+      </div>
+    </div>
+    
+    <div style="background:#fff4e0;border-radius:8px;padding:9px 13px;margin-top:8px;font-size:.82rem">⚡ <b>Gamma 暴露提示：</b>持有行权价接近现价（±5%）的期权，价格每波动 1% Gamma 效应会加速盈亏变化，请注意仓位风险。</div>
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <table class="stock-table" style="margin-top:6px"><thead><tr><th>策略</th><th>到期日</th><th>合约</th><th>最大盈亏</th><th>胜率</th></tr></thead><tbody><tr><td style="font-size:.82rem">牛市看跌价差 Bull Put Spread</td><td style="color:#86868b;font-size:.78rem">2026-06-05</td><td style="color:#86868b;font-size:.78rem">SELL PUT $402 | BUY PUT $398</td><td><b style="color:#34c759">+$189</b> / <span style="color:#ff3b30">-$311</span></td><td><b>70%</b></td></tr></tbody></table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td><b style="color:#34c759">卖&nbsp;CALL</b> <span class="hot-tag">大单</span></td><td>$410</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#34c759;font-weight:600">+$153</td></tr><tr><td><b style="color:#34c759">买&nbsp;CALL</b> <span class="hot-tag">大单</span></td><td>$400</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#ff3b30;font-weight:600">$-65</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">✅ <b>RSI 56.6 健康区间</b>：动能未过热，是加仓的较佳时机</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -436,6 +1363,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">ANET</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-up">偏强 63.54</span>
     <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('ANET')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -455,6 +1383,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">140.06</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">170.80</div></div>
   </div>
+  <div class="detail-panel" id="detail-ANET">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+2.8%</div>
+        <div class="dp-sub">MA20 = 151.11</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+10.9%</div>
+        <div class="dp-sub">MA200 = 140.06</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">7.2M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">✅ <b>RSI 63.5 健康区间</b>：动能未过热，是加仓的较佳时机</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -462,6 +1459,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">META</span>
     <span class="badge badge-neutral">震荡整理</span> <span class="badge badge-up">偏强 60.74</span>
     <span style="margin-left:6px">操作建议：<b style="color:#666">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('META')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -481,6 +1479,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">666.60</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">667.05</div></div>
   </div>
+  <div class="detail-panel" id="detail-META">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#ff9500">震荡整理</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+3.8%</div>
+        <div class="dp-sub">MA20 = 612.29</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#ff3b30">-4.7%</div>
+        <div class="dp-sub">MA200 = 666.60</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">16.8M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">⚠️ <b>跌破 MA200</b>：长期趋势偏弱，暂缓新增仓位，等均线修复</li><li style="margin-bottom:5px">✅ <b>RSI 60.7 健康区间</b>：动能未过热，是加仓的较佳时机</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -488,6 +1555,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">RKLB</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 80.26</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff9500">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('RKLB')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -507,6 +1575,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">68.62</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">162.83</div></div>
   </div>
+  <div class="detail-panel" id="detail-RKLB">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+28.7%</div>
+        <div class="dp-sub">MA20 = 115.04</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+115.7%</div>
+        <div class="dp-sub">MA200 = 68.62</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">20.5M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td><b style="color:#ff3b30">卖&nbsp;PUT</b></td><td>$129</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#34c759;font-weight:600">+$150</td></tr><tr><td><b style="color:#ff3b30">买&nbsp;PUT</b></td><td>$109</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#ff3b30;font-weight:600">$-9</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">🔴 <b>RSI 80.3 严重超买</b>：短线回调风险高，建议减仓或等回踩再入</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 115.7%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -514,6 +1651,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">MRVL</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 71.56</span>
     <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('MRVL')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -533,6 +1671,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">97.74</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">225.31</div></div>
   </div>
+  <div class="detail-panel" id="detail-MRVL">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+14.8%</div>
+        <div class="dp-sub">MA20 = 178.42</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+109.6%</div>
+        <div class="dp-sub">MA200 = 97.74</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">52.6M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td><b style="color:#ff3b30">卖&nbsp;PUT</b></td><td>$188</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#34c759;font-weight:600">+$116</td></tr><tr><td><b style="color:#ff3b30">买&nbsp;PUT</b></td><td>$178</td><td style="color:#86868b;font-size:.78rem">2026-05-29</td><td>1 张</td><td style="color:#ff3b30;font-weight:600">$-44</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">🟡 <b>RSI 71.6 超买区间</b>：动能过热，追涨需谨慎，等 RSI 回落至 60 以下</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 109.6%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -540,6 +1747,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">ASTS</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 88.97</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff3b30">减仓</b></span>
+    <button class="detail-btn" onclick="toggleDetail('ASTS')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -559,6 +1767,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">76.92</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">146.40</div></div>
   </div>
+  <div class="detail-panel" id="detail-ASTS">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+53.5%</div>
+        <div class="dp-sub">MA20 = 86.71</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+73.0%</div>
+        <div class="dp-sub">MA200 = 76.92</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">21.6M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「减仓」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">🔴 <b>RSI 89.0 严重超买</b>：短线回调风险高，建议减仓或等回踩再入</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 73.0%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -566,6 +1843,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">PL</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-warn">超买 87.17</span>
     <span style="margin-left:6px">操作建议：<b style="color:#ff3b30">减仓</b></span>
+    <button class="detail-btn" onclick="toggleDetail('PL')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -585,6 +1863,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">21.66</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">56.54</div></div>
   </div>
+  <div class="detail-panel" id="detail-PL">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+23.2%</div>
+        <div class="dp-sub">MA20 = 41.72</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+137.3%</div>
+        <div class="dp-sub">MA200 = 21.66</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">10.3M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「减仓」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">🔴 <b>RSI 87.2 严重超买</b>：短线回调风险高，建议减仓或等回踩再入</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 137.3%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 <div class="stock-block">
   <div class="sh">
@@ -592,6 +1939,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     <span class="sticker">COHR</span>
     <span class="badge badge-up">多头排列</span> <span class="badge badge-up">偏强 65.92</span>
     <span style="margin-left:6px">操作建议：<b style="color:#34c759">持有</b></span>
+    <button class="detail-btn" onclick="toggleDetail('COHR')">深度解析 ▾</button>
   </div>
   <table class="stock-table">
     <thead><tr><th>收盘价</th><th>涨跌幅</th><th>RSI</th><th>MA20</th><th>MA50</th><th>MA200</th></tr></thead>
@@ -611,6 +1959,75 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="quant-item"><div class="ql">止损价</div><div class="qv" style="color:#ff3b30">201.95</div></div>
     <div class="quant-item"><div class="ql">目标价</div><div class="qv" style="color:#34c759">414.65</div></div>
   </div>
+  <div class="detail-panel" id="detail-COHR">
+  <div class="dp-section">
+    <div class="dp-title">📊 基本面 &amp; 技术结构</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">价格结构</div>
+        <div class="dp-val" style="color:#34c759">多头排列 ✅</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA20</div>
+        <div class="dp-val" style="color:#34c759">+4.3%</div>
+        <div class="dp-sub">MA20 = 361.39</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">偏离 MA200</div>
+        <div class="dp-val" style="color:#34c759">+86.7%</div>
+        <div class="dp-sub">MA200 = 201.95</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">成交量</div>
+        <div class="dp-val">3.7M</div>
+      </div>
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">⚡ 期权情绪（IV · PCR · Gamma 暴露）</div>
+    <div class="dp-cards">
+      <div class="dp-card">
+        <div class="dp-label">隐含波动率 IV</div>
+        <div class="dp-val">N/A</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">IV 排名</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">PCR（成交量）</div>
+        <div class="dp-val" style="color:#86868b">N/A</div>
+        <div class="dp-sub" style="color:#86868b">暂无数据</div>
+      </div>
+      <div class="dp-card">
+        <div class="dp-label">推荐策略</div>
+        <div class="dp-val" style="font-size:.82rem">观望</div>
+        <div class="dp-sub">无明显信号，等待方向确认</div>
+      </div>
+    </div>
+    
+    
+    <div style="font-size:.8rem;color:#555;margin-top:8px">
+      <b>期权方向：</b>暂无 IV 数据，参考历史波动率
+    </div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">🎯 期权推荐方案</div>
+    <div style="color:#86868b;font-size:.82rem;margin-top:4px">暂无期权策略推荐</div>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">📋 当前期权持仓</div>
+    <table class="stock-table">
+      <thead><tr><th>方向</th><th>行权价</th><th>到期日</th><th>数量</th><th>浮盈</th></tr></thead>
+      <tbody><tr><td colspan="5" style="color:#86868b;text-align:center;font-size:.82rem">当前无期权持仓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dp-section">
+    <div class="dp-title">💡 操作逻辑：为何建议「持有」</div>
+    <ul style="padding-left:20px;font-size:.88rem"><li style="margin-bottom:5px">📈 <b>均线多头排列</b>：趋势完全向上，符合建仓/加仓条件</li><li style="margin-bottom:5px">📐 <b>价格较 MA200 偏离 86.7%</b>：均值回归风险不低，仓位不宜过重</li></ul>
+  </div>
+</div>
 </div>
 </div>
 <div class="section">
@@ -661,7 +2078,7 @@ ul.analysis-list li { margin-bottom: 6px; }
     </div>
     <div class="factor-card">
       <div class="ft">减仓方向</div>
-      <div class="fv">AAPL(RSI 88.21) / ASTS(RSI 88.97) / RKLB(RSI 80.26) 均极度超买，酌情减仓。CRCL/META 技术面偏弱，控制仓位。</div>
+      <div class="fv">AAPL(RSI 88.21) / ASTS(RSI 88.97) / RKLB(RSI 80.26) 均极度超买，酌情减仓。META 技术面偏弱，控制仓位；RDW 新建仓注意均线位置。</div>
     </div>
   </div>
 </div>
@@ -687,4 +2104,21 @@ ul.analysis-list li { margin-bottom: 6px; }
   <p style="text-align:center;color:#86868b;font-size:.8rem;margin-top:20px">
     价格/RSI/MA 来自富途 OpenD · 市场热榜来自 Yahoo Finance · 生成于 2026-05-29
   </p>
-</div></body></html>
+</div>
+<script>
+function toggleDetail(sym) {
+  var panel = document.getElementById('detail-' + sym);
+  var btn = event.currentTarget;
+  if (!panel) return;
+  if (panel.style.display === 'none' || panel.style.display === '') {
+    panel.style.display = 'block';
+    btn.textContent = '深度解析 ▴';
+    btn.classList.add('active');
+  } else {
+    panel.style.display = 'none';
+    btn.textContent = '深度解析 ▾';
+    btn.classList.remove('active');
+  }
+}
+</script>
+</body></html>
