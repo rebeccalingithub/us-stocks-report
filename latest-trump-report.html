@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特朗普交易追踪 2026年06月01日</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+       background: #f5f5f7; color: #1d1d1f; font-size: 15px; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 24px 16px 60px; }
+h1 { font-size: 2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 4px; }
+.subtitle { color: #86868b; font-size: 0.9rem; margin-bottom: 32px; }
+.section { background: #fff; border-radius: 18px; padding: 24px 28px; margin-bottom: 20px;
+           box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.section h2 { font-size: 1.15rem; font-weight: 700; color: #0071e3; margin-bottom: 16px;
+              padding-bottom: 10px; border-bottom: 1.5px solid #e5e5ea; }
+.section h3 { font-size: 1rem; font-weight: 600; margin: 14px 0 8px; color: #1d1d1f; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; }
+.card { background: #f5f5f7; border-radius: 14px; padding: 16px 18px; }
+.card .label { font-size: 0.75rem; color: #86868b; margin-bottom: 4px; letter-spacing: .5px; text-transform: uppercase; }
+.card .price { font-size: 1.6rem; font-weight: 700; color: #1d1d1f; }
+.card .meta { font-size: 0.82rem; color: #86868b; margin-top: 6px; }
+.stock-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.stock-table th { background: #f5f5f7; padding: 9px 10px; text-align: left; font-weight: 600;
+                  color: #86868b; font-size: 0.78rem; text-transform: uppercase; letter-spacing: .5px; }
+.stock-table td { padding: 9px 10px; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
+.stock-table tr:last-child td { border-bottom: none; }
+.stock-table tr:hover td { background: #f9f9fb; }
+.badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-up { background: #e8f9ee; color: #1a7a3c; }
+.badge-down { background: #fff0f0; color: #c0392b; }
+.badge-warn { background: #fff4e0; color: #b36200; }
+.badge-buy { background: #e8f0ff; color: #0051a2; }
+.badge-neutral { background: #f2f2f7; color: #555; }
+.quant-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 6px; }
+.quant-item { background: #f5f5f7; border-radius: 10px; padding: 8px 12px; text-align: center; }
+.quant-item .ql { font-size: 0.7rem; color: #86868b; margin-bottom: 2px; }
+.quant-item .qv { font-size: 1rem; font-weight: 700; }
+.risk-item { padding: 8px 0; border-bottom: 1px solid #f2f2f2; display: flex; gap: 10px; align-items: flex-start; }
+.risk-item:last-child { border-bottom: none; }
+.risk-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+ul.analysis-list { padding-left: 20px; }
+ul.analysis-list li { margin-bottom: 6px; }
+.factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 12px; }
+.factor-card { background: #f5f5f7; border-radius: 12px; padding: 14px 16px; }
+.factor-card .ft { font-size: 0.75rem; color: #86868b; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .5px; }
+.factor-card .fv { font-size: 0.95rem; font-weight: 600; }
+.earnings-table, .event-table, .trend-table {
+  width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.earnings-table th, .event-table th, .trend-table th {
+  background: #f5f5f7; padding: 8px 12px; text-align: left; font-weight: 600;
+  color: #86868b; font-size: 0.78rem; text-transform: uppercase; }
+.earnings-table td, .event-table td, .trend-table td {
+  padding: 8px 12px; border-bottom: 1px solid #f2f2f2; vertical-align: middle; }
+/* Fear & Greed gauge */
+.fg-wrap { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 12px 0; }
+.fg-gauge { flex: 1; min-width: 200px; }
+.fg-bar-bg { height: 14px; border-radius: 8px; background: linear-gradient(to right,
+  #2196f3 0%, #4caf50 25%, #ffeb3b 50%, #ff9800 75%, #f44336 100%);
+  position: relative; margin-bottom: 6px; }
+.fg-needle { position: absolute; top: -4px; width: 4px; height: 22px; background: #1d1d1f;
+  border-radius: 2px; transform: translateX(-2px); }
+.fg-labels { display: flex; justify-content: space-between; font-size: 0.7rem; color: #86868b; }
+.fg-score { font-size: 2.2rem; font-weight: 800; }
+.fg-info { min-width: 180px; }
+.fg-rating { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.fg-guidance { background: #f5f5f7; border-radius: 10px; padding: 10px 14px; font-size: 0.85rem; margin-top: 10px; }
+/* Probability bar */
+.prob-bar { display: flex; height: 10px; border-radius: 6px; overflow: hidden; min-width: 120px; }
+.prob-yes { background: #34c759; }
+.prob-no  { background: #ff3b30; }
+/* Stock block */
+.stock-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1.5px solid #f2f2f2; }
+.stock-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.stock-block .sh { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.stock-block .sh .sname { font-size: 1.1rem; font-weight: 700; }
+.stock-block .sh .sticker { font-size: 0.85rem; color: #86868b; }
+.tech-text { font-size: 0.88rem; color: #444; margin: 8px 0; }
+.hot-tag { display: inline-block; background: #fff4e0; color: #b36200; padding: 1px 7px;
+  border-radius: 10px; font-size: 0.72rem; font-weight: 600; margin-left: 6px; }
+/* Deep Analysis Panel */
+.detail-btn { display:inline-flex; align-items:center; gap:4px; padding:3px 12px;
+  border:1.5px solid #0071e3; border-radius:20px; background:transparent;
+  color:#0071e3; font-size:.76rem; font-weight:600; cursor:pointer;
+  margin-left:auto; transition:all .2s; white-space:nowrap; }
+.detail-btn:hover, .detail-btn.active { background:#0071e3; color:#fff; }
+.detail-panel { display:none; margin-top:14px; border-top:1.5px dashed #e5e5ea; padding-top:14px; }
+.dp-section { margin-bottom:16px; }
+.dp-section:last-child { margin-bottom:0; }
+.dp-title { font-size:.72rem; font-weight:700; color:#86868b; text-transform:uppercase;
+  letter-spacing:.5px; margin-bottom:8px; }
+.dp-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.dp-card { background:#f5f5f7; border-radius:10px; padding:9px 12px; }
+.dp-label { font-size:.66rem; color:#86868b; margin-bottom:3px; text-transform:uppercase; letter-spacing:.4px; }
+.dp-val { font-size:.98rem; font-weight:700; line-height:1.2; }
+.dp-sub { font-size:.68rem; color:#86868b; margin-top:2px; line-height:1.3; }
+/* Analyst rating bar */
+.rating-bar { display:flex; height:8px; border-radius:5px; overflow:hidden; margin-top:6px; }
+.rating-buy  { background:#34c759; }
+.rating-hold { background:#ff9500; }
+.rating-sell { background:#ff3b30; }
+@media(max-width:600px){
+  .cards { grid-template-columns: 1fr 1fr; }
+  .quant-grid { grid-template-columns: 1fr 1fr; }
+  .factor-grid { grid-template-columns: 1fr; }
+  .dp-cards { grid-template-columns: 1fr 1fr; }
+  h1 { font-size: 1.5rem; }
+  .fg-wrap { flex-direction: column; }
+}
+
+.trump-header { background: linear-gradient(135deg, #1d1d1f 0%, #2c2c2e 100%);
+  color: #fff; border-radius: 18px; padding: 24px 28px; margin-bottom: 20px; }
+.trump-header h1 { color: #fff; font-size: 1.6rem; }
+.trump-header .subtitle { color: rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="trump-header">
+    <h1>特朗普交易追踪</h1>
+    <p class="subtitle">数据日期：2026年06月01日 &nbsp;|&nbsp;
+    来源：open-cabinet.org · Unusual Whales · OGE Form 278T &nbsp;|&nbsp;
+    仅供研究参考，不构成投资建议</p>
+  </div>
+  <div class="section">
+    <h2>数据概览</h2>
+    
+<div class="cards">
+  <div class="card">
+    <div class="label">内阁官员</div>
+    <div class="price">1</div>
+    <div class="meta">有交易披露记录</div>
+  </div>
+  <div class="card">
+    <div class="label">内阁交易笔数</div>
+    <div class="price">2</div>
+    <div class="meta">最近 180 天</div>
+  </div>
+  <div class="card">
+    <div class="label">估值总额</div>
+    <div class="price">$0.4M</div>
+    <div class="meta">金额中位数合计</div>
+  </div>
+  <div class="card">
+    <div class="label">Trump 最新披露</div>
+    <div class="price">0</div>
+    <div class="meta">OGE Form 278T</div>
+  </div>
+  <div class="card">
+    <div class="label">组合重叠标的</div>
+    <div class="price" style="color:#0071e3">0</div>
+    <div class="meta">暂无</div>
+  </div>
+  <div class="card">
+    <div class="label">数据更新</div>
+    <div class="price" style="font-size:1rem">2026-06-01</div>
+    <div class="meta">open-cabinet.org + UW</div>
+  </div>
+</div>
+  </div>
+  
+<div class="section">
+  <h2>一、内阁成员持仓雷达（近 180 天，有 ticker 的标的）</h2>
+  <p style="font-size:.82rem;color:#86868b;margin-bottom:12px">
+    数据来源：open-cabinet.org（OGE 官方披露）· ⭐ = 与本组合重叠
+    · 注意：大多数交易为债券/基金无 ticker，此表仅展示有股票代码的标的
+  </p>
+  <table class="trend-table">
+    <thead>
+      <tr>
+        <th>代码</th><th>标的</th><th>买入官员数</th><th>卖出官员数</th>
+        <th>信号</th><th>买入方</th><th>卖出方</th>
+      </tr>
+    </thead>
+    <tbody><tr style="background:#fff"><td><b>HOOD</b> </td><td style="color:#86868b;font-size:.82rem">Robinhood Markets Inc. Class A Comm</td><td style="color:#34c759;font-weight:600">0</td><td style="color:#ff3b30;font-weight:600">1</td><td><span class="badge badge-neutral">单独操作</span></td><td style="font-size:.75rem;color:#555;max-width:200px">—</td><td style="font-size:.75rem;color:#555;max-width:200px">Kupor, Scott A</td></tr><tr style="background:#fff"><td><b>ABNB</b> </td><td style="color:#86868b;font-size:.82rem">Airbnb Inc. Class A Common Stock (A</td><td style="color:#34c759;font-weight:600">0</td><td style="color:#ff3b30;font-weight:600">1</td><td><span class="badge badge-neutral">单独操作</span></td><td style="font-size:.75rem;color:#555;max-width:200px">—</td><td style="font-size:.75rem;color:#555;max-width:200px">Kupor, Scott A</td></tr></tbody>
+  </table>
+</div>
+  
+<div class="section">
+  <h2>二、内阁成员最新交易明细（近 60 天，共 2 条）</h2>
+  <table class="trend-table">
+    <thead>
+      <tr><th>日期</th><th>官员 / 职务</th><th>代码</th><th>标的</th><th>方向</th><th>金额区间</th></tr>
+    </thead>
+    <tbody><tr><td style="white-space:nowrap">2026-04-17</td><td><b>Kupor, Scott A</b><br><span style="font-size:.75rem;color:#86868b">Director, Office of Personnel </span></td><td><b>ABNB</b></td><td style="font-size:.82rem;max-width:180px">Airbnb Inc. Class A Common Stock (ABNB)</td><td><span class="badge badge-down">卖出</span></td><td style="white-space:nowrap">$100,001-$250,000</td></tr><tr><td style="white-space:nowrap">2026-04-17</td><td><b>Kupor, Scott A</b><br><span style="font-size:.75rem;color:#86868b">Director, Office of Personnel </span></td><td><b>HOOD</b></td><td style="font-size:.82rem;max-width:180px">Robinhood Markets Inc. Class A Common St</td><td><span class="badge badge-down">卖出</span></td><td style="white-space:nowrap">$100,001-$250,000</td></tr></tbody>
+  </table>
+  <p style="font-size:.78rem;color:#86868b;margin-top:8px">
+    完整数据：<a href="https://open-cabinet.org" target="_blank" style="color:#0071e3">open-cabinet.org</a>
+    · 数据含延迟（OGE 披露周期约 30-60 天）
+  </p>
+</div>
+  
+<div class="section">
+  <h2>三、特朗普本人最新交易（0 笔，Q1 2026 披露）</h2>
+  <p style="font-size:.82rem;color:#86868b;margin-bottom:12px">
+    来源：Unusual Whales + OGE Form 278T（政府道德办公室）·
+    Trump 持仓以私募股权、REIT、债券为主，多数无 ticker 代码 ·
+    <a href="https://extapps2.oge.gov/201/Presiden.nsf/" target="_blank" style="color:#0071e3">查看原始 OGE 披露</a>
+  </p>
+  <table class="trend-table">
+    <thead>
+      <tr><th>交易日期</th><th>代码</th><th>标的</th><th>方向</th><th>金额区间</th><th>披露日期</th></tr>
+    </thead>
+    <tbody><tr><td colspan="6" style="text-align:center;color:#86868b">暂无数据</td></tr></tbody>
+  </table>
+</div>
+  
+<div class="section">
+  <h2>四、与本组合交叉分析</h2>
+  <p style="font-size:.82rem;color:#86868b;margin-bottom:12px">
+    以下为组合中同时出现在内阁交易记录的标的（聪明钱验证）
+  </p>
+  <p style="color:#86868b">当前 180 天内阁交易数据与组合标的暂无重叠。可能原因：内阁官员多持有债券/基金，公开持仓股票种类与本组合差异较大。</p>
+</div>
+  
+<div class="section">
+  <h2>五、政策言论信号监测</h2>
+  <div class="factor-grid">
+    <div class="factor-card">
+      <div class="ft">监测方式</div>
+      <div class="fv">AnySearch 联网搜索，每日报告生成时自动拉取</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">关注关键词</div>
+      <div class="fv">AI / 芯片 / 关税 / 能源 / 加密 / 国防 / 太空</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">来源</div>
+      <div class="fv">Truth Social · X / Twitter · 白宫新闻稿 · 媒体发布会</div>
+    </div>
+    <div class="factor-card">
+      <div class="ft">X 账号</div>
+      <div class="fv">@realDonaldTrump · @POTUS · @WhiteHouse</div>
+    </div>
+  </div>
+  <div style="background:#f5f5f7;border-radius:12px;padding:14px 18px;margin-top:14px;font-size:.88rem">
+    <b>如何使用：</b>在飞书机器人输入「特朗普今天说了什么」或「Trump AI芯片最新表态」，
+    机器人将通过 AnySearch 实时搜索并摘要关键信息。
+  </div>
+</div>
+  <p style="text-align:center;color:#86868b;font-size:.8rem;margin-top:20px">
+    OGE 数据延迟约 30-60 天 · 数据来源：open-cabinet.org + Unusual Whales · 生成于 2026-06-02
+  </p>
+</div>
+</body>
+</html>

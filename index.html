@@ -37,7 +37,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
     <div class="header-info">
       <span><span class="status-dot"></span>运行正常</span>
       <span>数据日期：2026年06月01日</span>
-      <span>下次更新：6月2日 06:30</span>
+      <span>下次更新：6月3日 06:30</span>
       <span>数据来源：富途 OpenD + Yahoo Finance</span>
     </div>
   </div>
@@ -45,6 +45,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
   <div class="nav-tabs">
     <button class="tab-btn active" onclick="switchTab('daily',this)">大盘报告</button>
     <button class="tab-btn" onclick="switchTab('invest',this)">投资报告</button>
+    <button class="tab-btn" onclick="switchTab('trump',this)">🇺🇸 特朗普追踪</button>
   </div>
 
   <div class="report-frame">
@@ -71,10 +72,12 @@ function switchTab(tab,btn){
   curTab=tab;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('reportFrame').src=tab==='daily'?'latest-daily-report.html':'latest-invest-report.html';
+  const srcs={'daily':'latest-daily-report.html','invest':'latest-invest-report.html','trump':'latest-trump-report.html'};
+  document.getElementById('reportFrame').src=srcs[tab]||'latest-daily-report.html';
 }
 function loadReport(dt){
   const f=document.getElementById('reportFrame');
+  if(curTab==='trump'){f.src='latest-trump-report.html';return;}
   f.src=curTab==='daily'?'archive/'+dt+'/daily_'+dt+'.html':'archive/'+dt+'/invest_'+dt+'.html';
   document.querySelectorAll('.history-item').forEach(i=>i.classList.remove('active'));
   event.currentTarget.classList.add('active');
