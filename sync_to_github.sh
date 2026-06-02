@@ -13,8 +13,8 @@ fi
 
 cd "$REPO_DIR"
 
-# 添加两份报告
-git add latest-daily-report.html latest-invest-report.html
+# 添加三份报告 + index
+git add latest-daily-report.html latest-invest-report.html latest-trump-report.html index.html
 
 # 无改动则跳过
 if git diff --cached --quiet; then
@@ -29,3 +29,8 @@ git commit -m "更新报告: $(date '+%Y-%m-%d %H:%M:%S')"
 git push origin main
 
 echo "Report synced to GitHub."
+
+# 部署到 Vercel（生产环境）
+echo "Deploying to Vercel..."
+npx vercel --prod --yes
+echo "Vercel deploy done."
