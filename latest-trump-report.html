@@ -130,20 +130,20 @@ ul.analysis-list li { margin-bottom: 6px; }
 .persona-head .pa-handle { font-size:.78rem; opacity:.6; margin-top:2px; }
 .persona-head .pa-stat { margin-left:auto; text-align:right; font-size:.8rem; opacity:.8; }
 .persona-posts { background:#fff; border-radius:0 0 14px 14px;
-  border:1px solid #e5e5ea; border-top:none; overflow:hidden; }
-.post-item { padding:14px 18px; border-bottom:1px solid #f2f2f2; }
-.post-item:last-child { border-bottom:none; }
-.post-meta { display:flex; gap:10px; align-items:center; margin-bottom:6px;
-  font-size:.75rem; color:#86868b; }
-.post-platform { background:#f5f5f7; padding:2px 8px; border-radius:8px; font-weight:600; }
-.post-text { font-size:.88rem; color:#333; line-height:1.55; margin-bottom:8px; }
-.post-tickers { display:flex; flex-wrap:wrap; gap:6px; }
-.post-ticker-tag { display:inline-flex; align-items:center; gap:4px;
-  padding:3px 10px; border-radius:12px; font-size:.76rem; font-weight:700;
-  background:#e8f0ff; color:#0051a2; }
-.post-ticker-tag .pt-price { font-weight:400; color:#555; font-size:.7rem; }
-.post-ticker-tag .pt-rsi { font-size:.68rem; }
-.no-posts { padding:20px; text-align:center; color:#86868b; font-size:.88rem; }
+  border:1px solid #e5e5ea; border-top:none; padding:16px 20px; }
+.tk-summary-list { display:flex; flex-direction:column; gap:12px; }
+.tk-row { display:flex; gap:14px; align-items:flex-start;
+  padding:12px 14px; background:#f9f9fb; border-radius:12px; }
+.tk-badge { min-width:76px; text-align:center; }
+.tk-badge .tk-sym { font-size:1.05rem; font-weight:800; color:#0051a2; }
+.tk-badge .tk-price { font-size:.78rem; color:#555; margin-top:2px; }
+.tk-badge .tk-rsi { font-size:.7rem; margin-top:1px; }
+.tk-badge .tk-cnt { font-size:.68rem; color:#86868b; margin-top:3px; }
+.tk-content { flex:1; }
+.tk-excerpt { font-size:.86rem; color:#333; line-height:1.6; }
+.tk-source { font-size:.72rem; color:#86868b; margin-top:4px; }
+.no-ticker-posts { padding:10px 0; font-size:.86rem; color:#86868b; }
+.no-posts { padding:16px 0; text-align:center; color:#86868b; font-size:.88rem; }
 .fetch-warn { background:#fff4e0; color:#b36200; padding:8px 14px; font-size:.8rem;
   border-radius:8px; margin-bottom:12px; }
 </style>
@@ -175,75 +175,35 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="pa-handle">@realDonaldTrump</div>
   </div>
   <div class="pa-stat">
-    <div>49 条发言</div>
     <div>近期提及：NVDA  AAPL  TSLA  INTC</div>
+    <div style="margin-top:3px;opacity:.7">49 条来源</div>
   </div>
 </div>
-  <div class="persona-posts"><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (Trump + Tech)</span>
-    <span>2026-05-21</span>
-    <a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQVl9rOHkwQl9VYldidlJVajgtZzY4VE5TQmt6eEQ2czIxaTk5N3Ywd3diVXdCT3dKVmhUNmxMRjJ0UnJKdGE2TUtuNklrdWx4UTVGZG5kY1pvWnNEWUhkdmZ5WkV3R0plREV6aTlGc1JEUHVQeG02VzRsVE82OERteXhsMGNfTEVPMllnN0p3?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+  <div class="persona-posts"><div class="tk-summary-list"><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">NVDA</div><div class="tk-price">$222.82 <span style="color:#ff3b30">-0.7%</span></div><div class="tk-rsi" style="color:#34c759">RSI 52 中性</div><div class="tk-cnt">提及 4 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">A Storm Is Coming for Stock Markets and 5 Other Things to Know Today - Barron's Trump Tariffs, Nvidia Earnings, Iran Fears.</div>
+    <div class="tk-source">Google News (Trump + Market)</div>
   </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQVl9rOHkwQl9VYldidlJVajgtZzY4VE5TQmt6eEQ2czIxaTk5N3Ywd3diVXdCT3dKVmhUNmxMRjJ0UnJKdGE2TUtuNklrdWx4UTVGZG5kY1pvWnNEWUhkdmZ5WkV3R0plREV6aTlGc1JEUHVQeG02VzRsVE82OERteXhsMGNfTEVPMllnN0p3?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">US-China Relations in the Trump 2.0 Era: A Timeline - China Briefing US-China Relations in the Trump 2.0 Era: A Timeline China Briefing</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (Trump + Market)</span>
-    <span>2026-05-15</span>
-    <a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPLWNBam1MNTNBbWdTdFZwNmF2eVZHb1U5bnFBTEdpU01DRzV0enRkN0FEdlprbjJ4Nmt0am1SdWdlZHpsb2ZqN2dnRmp1d2FBdE1RbU5fWnpNbHQ1OEhwanhzV0hFXzg0ZUZlS1lRVGhIUjZjZzFjTHRPUlZ4SDN2bnVKRXBqRXNRUzhBN2dHUVY5bEp2TE1ldTFOclVvY1g1YU42Y2piN0dzUlk?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">AAPL</div><div class="tk-price">$315.20 <span style="color:#34c759">+2.9%</span></div><div class="tk-rsi" style="color:#ff3b30">RSI 76 超买</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt"></div>
+    
   </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPLWNBam1MNTNBbWdTdFZwNmF2eVZHb1U5bnFBTEdpU01DRzV0enRkN0FEdlprbjJ4Nmt0am1SdWdlZHpsb2ZqN2dnRmp1d2FBdE1RbU5fWnpNbHQ1OEhwanhzV0hFXzg0ZUZlS1lRVGhIUjZjZzFjTHRPUlZ4SDN2bnVKRXBqRXNRUzhBN2dHUVY5bEp2TE1ldTFOclVvY1g1YU42Y2piN0dzUlk?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">War, inflation and Trump’s tariffs have shaken the US. Why does the stock market keep going up? - The Guardian War, inflation and Trump’s tariffs have shaken the US. Why does the stock market keep going up? The Guardian</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (Trump + Market)</span>
-    <span>2026-05-15</span>
-    <a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNdjZZRC1CbVpPX0tmb0t0LUtDZkd0eV94VWpOY0dON25xRXZ3SC1FOHA3MVJUSENxandhWEliOVNEYXZHOWVpcFJyWkcySjgxMEUxZ0RhaWNuMG52c3gwbzMtVHBvdkVHRzlud1l3b1pWVW5BRjdLeWJPRjkybDN3YkdHWFM4YURZMUt3ZTJXZmVDZHJmcVVkaUdscw?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">TSLA</div><div class="tk-price">$423.74 <span style="color:#34c759">+1.9%</span></div><div class="tk-rsi" style="color:#34c759">RSI 46 中性</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt"></div>
+    
   </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNdjZZRC1CbVpPX0tmb0t0LUtDZkd0eV94VWpOY0dON25xRXZ3SC1FOHA3MVJUSENxandhWEliOVNEYXZHOWVpcFJyWkcySjgxMEUxZ0RhaWNuMG52c3gwbzMtVHBvdkVHRzlud1l3b1pWVW5BRjdLeWJPRjkybDN3YkdHWFM4YURZMUt3ZTJXZmVDZHJmcVVkaUdscw?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">How Trump’s 'unusual' brokerage account traded around his own market-moving decisions - Fortune How Trump’s 'unusual' brokerage account traded around his own market-moving decisions Fortune</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (Trump + Tech)</span>
-    <span>2026-05-15</span>
-    <a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNVURKZzJZYk1PMERhWkh3bjd2dWRRaWF4RDMxUjFIWWdGYVZzbGU5VVZUZzJMTkR1MjlXbHhRRVl0a0huaWg5UTVRbno5SnBmbmFCNGZQMG12czVwRk4zSkh2cGw2bHVGQTRhbDIxNWxuaktrdXlLckVMN2x5djZVM2JR?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">INTC</div><div class="tk-price">$107.93 <span style="color:#ff3b30">-1.3%</span></div><div class="tk-rsi" style="color:#34c759">RSI 36 偏弱</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt"></div>
+    
   </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNVURKZzJZYk1PMERhWkh3bjd2dWRRaWF4RDMxUjFIWWdGYVZzbGU5VVZUZzJMTkR1MjlXbHhRRVl0a0huaWg5UTVRbno5SnBmbmFCNGZQMG12czVwRk4zSkh2cGw2bHVGQTRhbDIxNWxuaktrdXlLckVMN2x5djZVM2JR?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">Media Briefing: Making Sense of the Trump-Xi Summit - Council on Foreign Relations Media Briefing: Making Sense of the Trump-Xi Summit Council on Foreign Relations</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (Trump + Market)</span>
-    <span>2026-05-07</span>
-    <a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOOE5mb3ZMcVpvSThRcGdmYzd5T0lvVUNCZE03TWcwUjZDcG1lM2pfR3VIQTBILWprc3VnWDd1T3dycF95TnRFWGRWMlZ5Rno3RlU4TUZBT1dfdzFrelVnREhhRFA5OUV5ZjRKYnp5OVhuRGxtRmtTZVd2WXpWVmlzMFBkS1Z5UnExZVJJb2FvdmlrT2wxUFFBbw?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOOE5mb3ZMcVpvSThRcGdmYzd5T0lvVUNCZE03TWcwUjZDcG1lM2pfR3VIQTBILWprc3VnWDd1T3dycF95TnRFWGRWMlZ5Rno3RlU4TUZBT1dfdzFrelVnREhhRFA5OUV5ZjRKYnp5OVhuRGxtRmtTZVd2WXpWVmlzMFBkS1Z5UnExZVJJb2FvdmlrT2wxUFFBbw?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">The Stock Market Faces Serious Problems in President Trump's Economy. History Says This Could Happen Next. - The Motley Fool The Stock Market Faces Serious Problems in President Trump's Economy. History Says This Could Happen Next. The Motley Fool</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (Trump + Market)</span>
-    <span>2026-04-30</span>
-    <a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxOQWN2d3k1Z3oxdE9xTXVNX3hsUGlYYlN4UW53aURubHREcjFUZ2FZTjdIX2VibUs5Qkc5dDhVTUdtWlFvUk1LS3FEUGctRm9LZERoZHFGMXNrZHlhX2NEMFBfN0lPZmtEVTJvb0JidU9HLTZUSHVSRVRNZkduZkFVOEpWR0s4a2V6d0Fob3oxNjdoY1Uzd0thR2dfd1FmbUszaDdtRzhtcUFJLUFoaWp0dGNnNnVxeWtCWHczM3VhVGl" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxOQWN2d3k1Z3oxdE9xTXVNX3hsUGlYYlN4UW53aURubHREcjFUZ2FZTjdIX2VibUs5Qkc5dDhVTUdtWlFvUk1LS3FEUGctRm9LZERoZHFGMXNrZHlhX2NEMFBfN0lPZmtEVTJvb0JidU9HLTZUSHVSRVRNZkduZkFVOEpWR0s4a2V6d0Fob3oxNjdoY1Uzd0thR2dfd1FmbUszaDdtRzhtcUFJLUFoaWp0dGNnNnVxeWtCWHczM3VhVGl" target="_blank" style="color:#0071e3;text-decoration:none">Forget Tariffs — These 3 Threats Could Trigger the First Major Trump-Era Market Crash - 24/7 Wall St. Forget Tariffs — These 3 Threats Could Trigger the First Major Trump-Era Market Crash 24/7 Wall St.</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (Trump + Tech)</span>
-    <span>2026-04-02</span>
-    <a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOOUFOdUNyMGJEZmlzeW4tRFFPNVg1RTFfMXlXcXNDTE1tY05XeUVEb3RJUmdoNTc0NUNlV0tUR2lNNnE5MTFBbmVKSjg0d01DOE44Vmo1bVh6N05hZ3B1dF9oQXdJSENMaWFMR1JmMmlXY0htdXRuN0tKcTR4ZTdQbjQ4a3VSRGlyUUFXY0NlOVpBek9ISWFXekZEOTJaV1N6?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOOUFOdUNyMGJEZmlzeW4tRFFPNVg1RTFfMXlXcXNDTE1tY05XeUVEb3RJUmdoNTc0NUNlV0tUR2lNNnE5MTFBbmVKSjg0d01DOE44Vmo1bVh6N05hZ3B1dF9oQXdJSENMaWFMR1JmMmlXY0htdXRuN0tKcTR4ZTdQbjQ4a3VSRGlyUUFXY0NlOVpBek9ISWFXekZEOTJaV1N6?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">When the World Stops Syncing - Politico When the World Stops Syncing Politico</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (Trump + Market)</span>
-    <span>2026-02-27</span>
-    <a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOS0x3eFBKc1FQbUFwdjdFTzRza1VSejAwdF9wR0MwWmlJa2FocEpEa2Q5d0ZWUi1XX0psUFdYek0zYjQwVTlkRzY0X201cERPYWtXQWRNN2dkcUZDZDZlcTliaFdwNWF5c1MxUV85aHRrSVlKd1BlTGF6NFJkeGMzVlEwa0k5RE50MWVYejJfTTlUbloyREVOQWVPdnVwUDdkZFRvVDhNaUhKMkpvRTRR?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOS0x3eFBKc1FQbUFwdjdFTzRza1VSejAwdF9wR0MwWmlJa2FocEpEa2Q5d0ZWUi1XX0psUFdYek0zYjQwVTlkRzY0X201cERPYWtXQWRNN2dkcUZDZDZlcTliaFdwNWF5c1MxUV85aHRrSVlKd1BlTGF6NFJkeGMzVlEwa0k5RE50MWVYejJfTTlUbloyREVOQWVPdnVwUDdkZFRvVDhNaUhKMkpvRTRR?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">5 Best Stocks That Can Rise Above Trump Tariffs And Macro Uncertainty - Seeking Alpha 5 Best Stocks That Can Rise Above Trump Tariffs And Macro Uncertainty Seeking Alpha</a></div>
-  
-</div></div>
+</div></div></div>
 </div><div class="persona-card section" style="padding:0;overflow:hidden">
   <div class="persona-head" style="background:#00b894">
   <span class="pa-icon">🟢</span>
@@ -253,75 +213,35 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="pa-handle">@jensenhuang</div>
   </div>
   <div class="pa-stat">
-    <div>18 条发言</div>
     <div>近期提及：NVDA  INTC  MSFT  GOOG</div>
+    <div style="margin-top:3px;opacity:.7">18 条来源</div>
   </div>
 </div>
-  <div class="persona-posts"><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">NVIDIA Blog</span>
-    <span>2026-06-02</span>
-    <a href="https://blogs.nvidia.com/blog/industrial-software-leaders-secure-autonomous-ai-engineers-nemoclaw/" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+  <div class="persona-posts"><div class="tk-summary-list"><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">NVDA</div><div class="tk-price">$222.82 <span style="color:#ff3b30">-0.7%</span></div><div class="tk-rsi" style="color:#34c759">RSI 52 中性</div><div class="tk-cnt">提及 13 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">NVIDIA Factory Operations Blueprint Gives Factories a New AI Brain As factories move from isolated automation to plant-wide intelligence, manufacturers need AI systems that can connect live machine signals, quality systems, work instructions and oper</div>
+    <div class="tk-source">NVIDIA Blog</div>
   </div>
-  <div class="post-text"><a href="https://blogs.nvidia.com/blog/industrial-software-leaders-secure-autonomous-ai-engineers-nemoclaw/" target="_blank" style="color:#0071e3;text-decoration:none">Industrial Software Leaders Build Secure, Autonomous AI Engineers With NVIDIA NemoClaw Accelerated computing has revolutionized industrial engineering, compressing simulation times from weeks to hours. Today’s remaining challenges sit in the end-to-end workflow surrounding the simulations: computer-aided design, meshing, simulation setup and debugging, as well as post-processing and generating sum</a></div>
-  <div class="post-tickers"><span class="post-ticker-tag"><b>NVDA</b><span class="pt-price">$222.82</span><span class="pt-rsi" style="color:#34c759">RSI 52</span></span></div>
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">NVIDIA Blog</span>
-    <span>2026-06-02</span>
-    <a href="https://blogs.nvidia.com/blog/microsoft-build-windows-local-cloud-devices/" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">INTC</div><div class="tk-price">$107.93 <span style="color:#ff3b30">-1.3%</span></div><div class="tk-rsi" style="color:#34c759">RSI 36 偏弱</div><div class="tk-cnt">提及 3 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">NVIDIA Factory Operations Blueprint Gives Factories a New AI Brain As factories move from isolated automation to plant-wide intelligence, manufacturers need AI systems that can connect live machine signals, quality systems, work instructions and oper</div>
+    <div class="tk-source">NVIDIA Blog</div>
   </div>
-  <div class="post-text"><a href="https://blogs.nvidia.com/blog/microsoft-build-windows-local-cloud-devices/" target="_blank" style="color:#0071e3;text-decoration:none">NVIDIA Partners With Microsoft on Unified Stack for Agentic AI Deployment, From Windows Devices to Cloud to Local The agentic AI moment has arrived, but delivering on its promise requires more than good models. It also takes fast hardware, secure runtimes, a responsive data layer and models tuned for long-running reasoning. NVIDIA and Microsoft are bringing that full stack to developers across Win</a></div>
-  <div class="post-tickers"><span class="post-ticker-tag"><b>MSFT</b><span class="pt-price">$441.31</span><span class="pt-rsi" style="color:#34c759">RSI 66</span></span><span class="post-ticker-tag"><b>NVDA</b><span class="pt-price">$222.82</span><span class="pt-rsi" style="color:#34c759">RSI 52</span></span></div>
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">NVIDIA Blog</span>
-    <span>2026-06-02</span>
-    <a href="https://blogs.nvidia.com/blog/financial-institutions-transaction-foundation-models/" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">MSFT</div><div class="tk-price">$441.31 <span style="color:#ff3b30">-4.2%</span></div><div class="tk-rsi" style="color:#34c759">RSI 66 偏强</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">NVIDIA Partners With Microsoft on Unified Stack for Agentic AI Deployment, From Windows Devices to Cloud to Local The agentic AI moment has arrived, but delivering on its promise requires more than good models.</div>
+    <div class="tk-source">NVIDIA Blog</div>
   </div>
-  <div class="post-text"><a href="https://blogs.nvidia.com/blog/financial-institutions-transaction-foundation-models/" target="_blank" style="color:#0071e3;text-decoration:none">Why Financial Institutions Are Converging on Transaction Foundation Models to Build Their Own Intelligence Financial institutions have spent years building AI: fraud models, credit models, recommendation engines and risk systems. While this sprawl of task-specific models has been effective, it’s also constrained by siloed systems. Siloed systems prevent institutions from developing a unified under</a></div>
-  <div class="post-tickers"><span class="post-ticker-tag"><b>INTC</b><span class="pt-price">$107.93</span><span class="pt-rsi" style="color:#34c759">RSI 36</span></span></div>
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">NVIDIA Blog</span>
-    <span>2026-06-02</span>
-    <a href="https://blogs.nvidia.com/blog/jetson-agentic-ai-physical-world/" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">GOOG</div><div class="tk-price">$358.39 <span style="color:#ff3b30">-3.8%</span></div><div class="tk-rsi" style="color:#34c759">RSI 32 偏弱</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt"></div>
+    
   </div>
-  <div class="post-text"><a href="https://blogs.nvidia.com/blog/jetson-agentic-ai-physical-world/" target="_blank" style="color:#0071e3;text-decoration:none">NVIDIA Jetson Brings Agentic AI to the Physical World Agentic AI is getting physical. At COMPUTEX on Tuesday, NVIDIA announced NVIDIA JetPack 7.2 and NVIDIA NemoClaw support on NVIDIA Jetson. JetPack 7.2 brings agentic AI skills, Yocto project support, NVIDIA CUDA 13 on NVIDIA Jetson Orin, a substantial performance gain on Jetson AGX Orin 32GB module and Multi-Instance GPU (MIG) support on NVIDIA </a></div>
-  <div class="post-tickers"><span class="post-ticker-tag"><b>NVDA</b><span class="pt-price">$222.82</span><span class="pt-rsi" style="color:#34c759">RSI 52</span></span></div>
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">NVIDIA Blog</span>
-    <span>2026-06-01</span>
-    <a href="https://blogs.nvidia.com/blog/ai-cloud-ecosystem/" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://blogs.nvidia.com/blog/ai-cloud-ecosystem/" target="_blank" style="color:#0071e3;text-decoration:none">NVIDIA AI Cloud Ecosystem Expands Worldwide to Meet Global AI Compute Demand The NVIDIA AI Cloud ecosystem is accelerating the global buildout of AI factory infrastructure. Partners are expanding capacity to meet growing demand from enterprises, startups, nations, AI labs and developers scaling agentic AI applications. NVIDIA AI Clouds are a growing ecosystem of purpose-built clouds serving the ex</a></div>
-  <div class="post-tickers"><span class="post-ticker-tag"><b>NVDA</b><span class="pt-price">$222.82</span><span class="pt-rsi" style="color:#34c759">RSI 52</span></span></div>
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">NVIDIA Blog</span>
-    <span>2026-06-01</span>
-    <a href="https://blogs.nvidia.com/blog/factory-operations-fox-blueprint-ai-brain/" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://blogs.nvidia.com/blog/factory-operations-fox-blueprint-ai-brain/" target="_blank" style="color:#0071e3;text-decoration:none">NVIDIA Factory Operations Blueprint Gives Factories a New AI Brain As factories move from isolated automation to plant-wide intelligence, manufacturers need AI systems that can connect live machine signals, quality systems, work instructions and operational alerts into a unified decision layer. Today at GTC Taipei at COMPUTEX, NVIDIA announced the NVIDIA Factory Operations Blueprint (FOX) — a refe</a></div>
-  <div class="post-tickers"><span class="post-ticker-tag"><b>INTC</b><span class="pt-price">$107.93</span><span class="pt-rsi" style="color:#34c759">RSI 36</span></span><span class="post-ticker-tag"><b>NVDA</b><span class="pt-price">$222.82</span><span class="pt-rsi" style="color:#34c759">RSI 52</span></span></div>
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">NVIDIA Blog</span>
-    <span>2026-06-01</span>
-    <a href="https://blogs.nvidia.com/blog/taiwan-ecosystem-ai-infrastructure/" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://blogs.nvidia.com/blog/taiwan-ecosystem-ai-infrastructure/" target="_blank" style="color:#0071e3;text-decoration:none">Taiwan’s Industry Titans Turbocharge World’s AI Infrastructure Buildout With NVIDIA Taiwan is home to more than 500 NVIDIA ecosystem partners. More than 1 million NVIDIA MGX rack components for NVIDIA Vera Rubin infrastructure come together in Taiwan, from across 25 factory sites. As Vera Rubin ramps into full production to power agentic AI factories worldwide, that ecosystem spans the full supply</a></div>
-  <div class="post-tickers"><span class="post-ticker-tag"><b>NVDA</b><span class="pt-price">$222.82</span><span class="pt-rsi" style="color:#34c759">RSI 52</span></span></div>
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">NVIDIA Blog</span>
-    <span>2026-06-01</span>
-    <a href="https://blogs.nvidia.com/blog/cosmos-3-physical-ai-open-world-foundation-model/" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://blogs.nvidia.com/blog/cosmos-3-physical-ai-open-world-foundation-model/" target="_blank" style="color:#0071e3;text-decoration:none">How Cosmos 3 Helps Physical AI Think Before It Acts</a></div>
-  
-</div></div>
+</div></div></div>
 </div><div class="persona-card section" style="padding:0;overflow:hidden">
   <div class="persona-head" style="background:#6c5ce7">
   <span class="pa-icon">🔬</span>
@@ -331,75 +251,29 @@ ul.analysis-list li { margin-bottom: 6px; }
     <div class="pa-handle">@Serenity_Inv</div>
   </div>
   <div class="pa-stat">
-    <div>25 条发言</div>
     <div>近期提及：NVDA  TSM  GOOG</div>
+    <div style="margin-top:3px;opacity:.7">25 条来源</div>
   </div>
 </div>
-  <div class="persona-posts"><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (供应链)</span>
-    <span>2026-05-28</span>
-    <a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxOUFhqX283NXgweERaNlZ3MW94UHhfNXFNcmZhM1I2b1ZOa29keHZfTkhTbVBZcjRKa2hMaEw3VmUzZzBxQXZLanA0dS11dmhNNDEtM09aTk9xTS1pT2N5NFJDaXJpNmFkY3RsOVpjcjhQMjl6N3oyTTZQZTYwTVVQZjkwVDEyVTRDU2xMVlFOZXRwUy1qS01tUS1oYm9qTHI4SDQ5WjBfQ2FzanpjWi1uNTVLQ2R4czJ6S0tQSHZVREV" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+  <div class="persona-posts"><div class="tk-summary-list"><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">NVDA</div><div class="tk-price">$222.82 <span style="color:#ff3b30">-0.7%</span></div><div class="tk-rsi" style="color:#34c759">RSI 52 中性</div><div class="tk-cnt">提及 2 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">Chip testing latest chokepoint as Nvidia, Google designs grow more complex - Nikkei Asia Chip testing latest chokepoint as Nvidia, Google designs grow more complex Nikkei Asia</div>
+    <div class="tk-source">Google News (供应链)</div>
   </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxOUFhqX283NXgweERaNlZ3MW94UHhfNXFNcmZhM1I2b1ZOa29keHZfTkhTbVBZcjRKa2hMaEw3VmUzZzBxQXZLanA0dS11dmhNNDEtM09aTk9xTS1pT2N5NFJDaXJpNmFkY3RsOVpjcjhQMjl6N3oyTTZQZTYwTVVQZjkwVDEyVTRDU2xMVlFOZXRwUy1qS01tUS1oYm9qTHI4SDQ5WjBfQ2FzanpjWi1uNTVLQ2R4czJ6S0tQSHZVREV" target="_blank" style="color:#0071e3;text-decoration:none">The AI Memory Shortage Is Just Getting Started and These 3 ETFs Own Every Layer of the Supply Chain - 24/7 Wall St. The AI Memory Shortage Is Just Getting Started and These 3 ETFs Own Every Layer of the Supply Chain 24/7 Wall St.</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (供应链)</span>
-    <span>2026-05-17</span>
-    <a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxORXlCa0gyT29UdjdaZVRtVklHc2RlLTBNOWhYNEZXdEZpVFhHTTNuVzF1Qy0tYk9ZRGhuMlpkd0NQZW1DM3BUYmJkTFVrblctX2c5MkhJV1F6QUlUXzNXTFl5Y0o1UWlwT2xhN2FOd1h4cXBWbnhiV2tIU29PWnlhUTZZNTFTUjRRU3hWNXhlNUxaNjEyT3VV?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">TSM</div><div class="tk-price">$446.69 <span style="color:#34c759">+2.5%</span></div><div class="tk-rsi" style="color:#ff3b30">RSI 71 超买</div><div class="tk-cnt">提及 2 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">Nvidia Locks Up TSMC's Packaging, Creating AI's Next Chokepoint - The Tech Buzz Nvidia Locks Up TSMC's Packaging, Creating AI's Next Chokepoint The Tech Buzz</div>
+    <div class="tk-source">Google News (供应链)</div>
   </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxORXlCa0gyT29UdjdaZVRtVklHc2RlLTBNOWhYNEZXdEZpVFhHTTNuVzF1Qy0tYk9ZRGhuMlpkd0NQZW1DM3BUYmJkTFVrblctX2c5MkhJV1F6QUlUXzNXTFl5Y0o1UWlwT2xhN2FOd1h4cXBWbnhiV2tIU29PWnlhUTZZNTFTUjRRU3hWNXhlNUxaNjEyT3VV?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">A 45,000-person labor strike at Samsung's memory chip plants could throw a wrench into the AI boom - Fortune A 45,000-person labor strike at Samsung's memory chip plants could throw a wrench into the AI boom Fortune</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (供应链)</span>
-    <span>2026-05-08</span>
-    <a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOZHVLVkJYT1dLQzQ3aEZfUTBxY0tTMDdMRHpldnlVbmo3UDNVaGRwbmJzUElQcjFYMEthNGdqVlYxYklhS1dGbGxxRUc2TlZKWGpSLXZtVk11NXB1YTdCd3dkQ0FFYm5NVlFFaXBsNUdhcHE1MHYzMFA0OVJyZEU3bGRnUXlQQV9XZmpUVGdUQVg1dXdIeC1VN3V3QXBHa1VFM2FRdFg4dDdMUDNqV1ItbGJR?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">GOOG</div><div class="tk-price">$358.39 <span style="color:#ff3b30">-3.8%</span></div><div class="tk-rsi" style="color:#34c759">RSI 32 偏弱</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">Chip testing latest chokepoint as Nvidia, Google designs grow more complex - Nikkei Asia Chip testing latest chokepoint as Nvidia, Google designs grow more complex Nikkei Asia</div>
+    <div class="tk-source">Google News (供应链)</div>
   </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOZHVLVkJYT1dLQzQ3aEZfUTBxY0tTMDdMRHpldnlVbmo3UDNVaGRwbmJzUElQcjFYMEthNGdqVlYxYklhS1dGbGxxRUc2TlZKWGpSLXZtVk11NXB1YTdCd3dkQ0FFYm5NVlFFaXBsNUdhcHE1MHYzMFA0OVJyZEU3bGRnUXlQQV9XZmpUVGdUQVg1dXdIeC1VN3V3QXBHa1VFM2FRdFg4dDdMUDNqV1ItbGJR?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">All-In on AI: How the United States and Taiwan Are Deepening Their Chip Partnership - Stimson Center All-In on AI: How the United States and Taiwan Are Deepening Their Chip Partnership Stimson Center</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (供应链)</span>
-    <span>2026-05-02</span>
-    <a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxPQU9XdU5pUmx0TllVckJtOVowUkcyNEN3OWlPeVBkR2w0TEVGZFY1MkduTDgtUlQ2V0hia04wV0dlTzltRkpMRGJmWHVEa21Vb2hDa1NiRkN5d0hoU3E5WGpxZ2VHbFdBZ0VXY3R1WklqSlE4MExFTG1UUS0yXy0xSU1mOVh1bmdoaFE3Q1oyWW81amtpeFB1cTJRV05SRUQ0cmtLMEF3U1d3d0pNU1E2V3p3d1dMWmVzcnY3ckJrMld" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxPQU9XdU5pUmx0TllVckJtOVowUkcyNEN3OWlPeVBkR2w0TEVGZFY1MkduTDgtUlQ2V0hia04wV0dlTzltRkpMRGJmWHVEa21Vb2hDa1NiRkN5d0hoU3E5WGpxZ2VHbFdBZ0VXY3R1WklqSlE4MExFTG1UUS0yXy0xSU1mOVh1bmdoaFE3Q1oyWW81amtpeFB1cTJRV05SRUQ0cmtLMEF3U1d3d0pNU1E2V3p3d1dMWmVzcnY3ckJrMld" target="_blank" style="color:#0071e3;text-decoration:none">Analyst: Forget the Chip Cycle, Because AI Demand Has Permanently Rewired Semiconductor Pricing - 24/7 Wall St. Analyst: Forget the Chip Cycle, Because AI Demand Has Permanently Rewired Semiconductor Pricing 24/7 Wall St.</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (供应链)</span>
-    <span>2026-04-17</span>
-    <a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxNMEN0Wk93bUFUa2VTdEhjWWk1YmdrUWZ3OXRjTU43V2JyN3JFVGJ5Qlpyb2d2ZTBIY0VyYjd3UmdRTUZCcktrYjdMYXI3OHB6NDk0Qzd5eGxkWElvT3Y4eFdPU3FRcGo2UG00cXFNQUVHMnlDVU1NY2RNR2pRVFJEZTZtdnFNcjcwWXptdDBrMzJTdF9BRGcyc3I3cFdVQU5KMWpGNXFVbFE5am1Sd2pCUkFYZ0d6Q212ZU92cXpOVUF" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxNMEN0Wk93bUFUa2VTdEhjWWk1YmdrUWZ3OXRjTU43V2JyN3JFVGJ5Qlpyb2d2ZTBIY0VyYjd3UmdRTUZCcktrYjdMYXI3OHB6NDk0Qzd5eGxkWElvT3Y4eFdPU3FRcGo2UG00cXFNQUVHMnlDVU1NY2RNR2pRVFJEZTZtdnFNcjcwWXptdDBrMzJTdF9BRGcyc3I3cFdVQU5KMWpGNXFVbFE5am1Sd2pCUkFYZ0d6Q212ZU92cXpOVUF" target="_blank" style="color:#0071e3;text-decoration:none">Stifel Upgrades Onto Innovation to Buy With a Massive New Price Target: Did the Market Miss a Huge Semiconductor Signal? - 24/7 Wall St. Stifel Upgrades Onto Innovation to Buy With a Massive New Price Target: Did the Market Miss a Huge Semiconductor Signal? 24/7 Wall St.</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (供应链)</span>
-    <span>2026-04-14</span>
-    <a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxQd0pXRDREbXoyWTdUdmxEM1FxNktia2tlRHdVZGd1R25rb1M3dkVwTlhXYjB0NU1KYjZPWG9Pa3hrdUUtMDJrVEpINGt4eDBNWkhfcXJCdmdCTTFzblBWY0lUOExnb3NPcFJnUTJUbU5DTlp1dHhKWjBMcVotX01VcEhxWnJ1UkhQZHd0aDJ2eWxnRGtOX29ESXY2YU8xSXFwZm9Ud0pYN2tEOWt5S1NhU3NZbHp5NHZOUHhELVphWUg" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxQd0pXRDREbXoyWTdUdmxEM1FxNktia2tlRHdVZGd1R25rb1M3dkVwTlhXYjB0NU1KYjZPWG9Pa3hrdUUtMDJrVEpINGt4eDBNWkhfcXJCdmdCTTFzblBWY0lUOExnb3NPcFJnUTJUbU5DTlp1dHhKWjBMcVotX01VcEhxWnJ1UkhQZHd0aDJ2eWxnRGtOX29ESXY2YU8xSXFwZm9Ud0pYN2tEOWt5S1NhU3NZbHp5NHZOUHhELVphWUg" target="_blank" style="color:#0071e3;text-decoration:none">The Bromine Chokepoint: How Strife in the Middle East Could Halt Production of the World’s Memory Chips - War on the Rocks The Bromine Chokepoint: How Strife in the Middle East Could Halt Production of the World’s Memory Chips War on the Rocks</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (供应链)</span>
-    <span>2026-04-13</span>
-    <a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQVXRCQWFwQ3hUTlFLSkJuYmppZ3BZc05QNl9aZERJSF85cDhsdW81eGZzYzZzeHFzcGprMVFBZ0Q4ZnhuZUVOVDg5bHp0ZXdseU9tdXk1QkJIelJLYW14TlBpRUdmelhvMGZFQ3V4NWd2eXV2VnlEY1R0czdYclp4ZndzcEFzRUY1OWVuOUtfVXVVMG1NNFVvSlFn?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQVXRCQWFwQ3hUTlFLSkJuYmppZ3BZc05QNl9aZERJSF85cDhsdW81eGZzYzZzeHFzcGprMVFBZ0Q4ZnhuZUVOVDg5bHp0ZXdseU9tdXk1QkJIelJLYW14TlBpRUdmelhvMGZFQ3V4NWd2eXV2VnlEY1R0czdYclp4ZndzcEFzRUY1OWVuOUtfVXVVMG1NNFVvSlFn?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">Has the Iran War Triggered Another Semiconductor Crisis? - orfonline.org Has the Iran War Triggered Another Semiconductor Crisis? orfonline.org</a></div>
-  
-</div><div class="post-item">
-  <div class="post-meta">
-    <span class="post-platform">Google News (供应链)</span>
-    <span>2026-04-10</span>
-    <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE5pNXVaNGdyZnpVNTRnZEdTX1FKWS00T1FnZElaSU5Qd0JLSnFYMkVIMktPd242c0FhcFRpRkxvVmRnVDM5cDhYQWhMSmRJYW5ZY29GNUNaa3NGWWxhZ3Rfb0ZYWkRJLVhHQ0luUS1xVmdHREppbjhGcFk5UnZVUms?oc=5" target="_blank" style="color:#0071e3;font-size:.75rem">原文链接 ↗</a>
-  </div>
-  <div class="post-text"><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE5pNXVaNGdyZnpVNTRnZEdTX1FKWS00T1FnZElaSU5Qd0JLSnFYMkVIMktPd242c0FhcFRpRkxvVmRnVDM5cDhYQWhMSmRJYW5ZY29GNUNaa3NGWWxhZ3Rfb0ZYWkRJLVhHQ0luUS1xVmdHREppbjhGcFk5UnZVUms?oc=5" target="_blank" style="color:#0071e3;text-decoration:none">Beyond ASML: Towards Middle Power Semiconductor Sovereignty - ORF Middle East Beyond ASML: Towards Middle Power Semiconductor Sovereignty ORF Middle East</a></div>
-  
-</div></div>
+</div></div></div>
 </div>
   <p style="text-align:center;color:#86868b;font-size:.78rem;margin-top:20px">
     数据来源：Truth Social · NVIDIA Newsroom · X (via Nitter) · 生成于 2026-06-03 ·
