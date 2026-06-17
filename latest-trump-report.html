@@ -1,5 +1,10 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
-<title>聪明钱</title><style>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聪明钱 2026年06月17日</title>
+<style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
        background: #f5f5f7; color: #1d1d1f; font-size: 15px; line-height: 1.6; }
@@ -103,8 +108,171 @@ ul.analysis-list li { margin-bottom: 6px; }
   h1 { font-size: 1.5rem; }
   .fg-wrap { flex-direction: column; }
 }
-</style></head><body><div class="container">
-<h1>聪明钱</h1>
-<div class="section"><h2>数据未加载</h2>
-<p>请先运行 <code>python fetch_trump_data.py 2026-06-15</code> 生成数据文件。</p>
-</div></div></body></html>
+
+.sm-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color:#fff; border-radius:18px; padding:24px 28px; margin-bottom:20px; }
+.sm-header h1 { color:#fff; font-size:1.6rem; }
+.sm-header .subtitle { color:rgba(255,255,255,.6); font-size:.85rem; }
+.ticker-board { display:flex; flex-wrap:wrap; gap:10px; padding:16px 0 8px; }
+.ticker-chip { display:inline-flex; align-items:center; gap:6px;
+  padding:6px 14px; border-radius:20px; font-size:.82rem; font-weight:700;
+  background:#f5f5f7; color:#1d1d1f; cursor:default; }
+.ticker-chip .tc-cnt { background:#0071e3; color:#fff; border-radius:10px;
+  padding:1px 6px; font-size:.7rem; }
+.ticker-chip.has-data { background:#e8f0ff; color:#0051a2; }
+.ticker-data { font-size:.72rem; color:#86868b; margin-left:2px; }
+.persona-card { margin-bottom:20px; }
+.persona-head { display:flex; align-items:center; gap:12px; padding:14px 20px;
+  border-radius:14px 14px 0 0; color:#fff; }
+.persona-head .pa-icon { font-size:1.8rem; }
+.persona-head .pa-name { font-size:1.1rem; font-weight:700; }
+.persona-head .pa-title { font-size:.82rem; opacity:.8; }
+.persona-head .pa-handle { font-size:.78rem; opacity:.6; margin-top:2px; }
+.persona-head .pa-stat { margin-left:auto; text-align:right; font-size:.8rem; opacity:.8; }
+.persona-posts { background:#fff; border-radius:0 0 14px 14px;
+  border:1px solid #e5e5ea; border-top:none; padding:16px 20px; }
+.tk-summary-list { display:flex; flex-direction:column; gap:12px; }
+.tk-row { display:flex; gap:14px; align-items:flex-start;
+  padding:12px 14px; background:#f9f9fb; border-radius:12px; }
+.tk-badge { min-width:76px; text-align:center; }
+.tk-badge .tk-sym { font-size:1.05rem; font-weight:800; color:#0051a2; }
+.tk-badge .tk-price { font-size:.78rem; color:#555; margin-top:2px; }
+.tk-badge .tk-rsi { font-size:.7rem; margin-top:1px; }
+.tk-badge .tk-cnt { font-size:.68rem; color:#86868b; margin-top:3px; }
+.tk-content { flex:1; }
+.tk-excerpt { font-size:.86rem; color:#333; line-height:1.6; }
+.tk-source { font-size:.72rem; color:#86868b; margin-top:4px; }
+.no-ticker-posts { padding:10px 0; font-size:.86rem; color:#86868b; }
+.no-posts { padding:16px 0; text-align:center; color:#86868b; font-size:.88rem; }
+.fetch-warn { background:#fff4e0; color:#b36200; padding:8px 14px; font-size:.8rem;
+  border-radius:8px; margin-bottom:12px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="sm-header">
+    <h1>🧠 聪明钱 · 关键人物发言追踪</h1>
+    <p class="subtitle">
+      监控 Trump / 黄仁勋 / Serenity 等人在公开社交媒体的发言 ·
+      着重提取提及的个股标的 · 数据日期：2026年06月17日 ·
+      更新时间：2026-06-17
+    </p>
+  </div>
+  
+<div class="section">
+  <h2>今日热议标的（全渠道提及次数）</h2>
+  <p style="font-size:.82rem;color:#86868b;margin-bottom:4px">
+    蓝色 = 在你的持仓/关注列表中 · 数字 = 提及次数
+  </p>
+  <div class="ticker-board"><div class="ticker-chip has-data">NVDA <span class="ticker-data">$207.41 <span style="color:#34c759">RSI 47</span></span><span class="tc-cnt">17</span></div><div class="ticker-chip has-data">GOOG <span class="ticker-data">$371.10 <span style="color:#34c759">RSI 42</span></span><span class="tc-cnt">3</span></div><div class="ticker-chip has-data">TSM <span class="ticker-data">$425.83 <span style="color:#34c759">RSI 51</span></span><span class="tc-cnt">2</span></div><div class="ticker-chip has-data">MRVL <span class="ticker-data">$278.67 <span style="color:#34c759">RSI 62</span></span><span class="tc-cnt">1</span></div><div class="ticker-chip has-data">COHR <span class="ticker-data">$382.81 <span style="color:#34c759">RSI 50</span></span><span class="tc-cnt">1</span></div><div class="ticker-chip has-data">INTC <span class="ticker-data">$117.05 <span style="color:#34c759">RSI 47</span></span><span class="tc-cnt">1</span></div><div class="ticker-chip has-data">AAPL <span class="ticker-data">$299.24 <span style="color:#34c759">RSI 40</span></span><span class="tc-cnt">1</span></div></div>
+</div>
+  <div class="persona-card section" style="padding:0;overflow:hidden">
+  <div class="persona-head" style="background:#d63031">
+  <span class="pa-icon">🇺🇸</span>
+  <div>
+    <div class="pa-name">Donald Trump</div>
+    <div class="pa-title">美国总统</div>
+    <div class="pa-handle">@realDonaldTrump</div>
+  </div>
+  <div class="pa-stat">
+    <div>近期提及：NVDA  MRVL</div>
+    <div style="margin-top:3px;opacity:.7">49 条来源</div>
+  </div>
+</div>
+  <div class="persona-posts"><div class="tk-summary-list"><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">NVDA</div><div class="tk-price">$207.41 <span style="color:#ff3b30">-2.4%</span></div><div class="tk-rsi" style="color:#34c759">RSI 47 中性</div><div class="tk-cnt">提及 2 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt"></div>
+    
+  </div>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">MRVL</div><div class="tk-price">$278.67 <span style="color:#ff3b30">-9.8%</span></div><div class="tk-rsi" style="color:#34c759">RSI 62 偏强</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">Dow Jones Futures Fall, Oil Prices Rise As Trump Sets New Hormuz Target Date; Palo Alto, Marvell Are Early Movers - Investor's Business Daily Dow Jones Futures Fall, Oil Prices Rise As Trump Sets New Hormuz Target Date; Palo Alto, Marvell Are Early M</div>
+    <div class="tk-source">Google News (Trump + Market)</div>
+  </div>
+</div></div></div>
+</div><div class="persona-card section" style="padding:0;overflow:hidden">
+  <div class="persona-head" style="background:#00b894">
+  <span class="pa-icon">🟢</span>
+  <div>
+    <div class="pa-name">黄仁勋 Jensen Huang</div>
+    <div class="pa-title">NVIDIA CEO</div>
+    <div class="pa-handle">@jensenhuang</div>
+  </div>
+  <div class="pa-stat">
+    <div>近期提及：NVDA  GOOG  COHR  INTC  AAPL</div>
+    <div style="margin-top:3px;opacity:.7">18 条来源</div>
+  </div>
+</div>
+  <div class="persona-posts"><div class="tk-summary-list"><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">NVDA</div><div class="tk-price">$207.41 <span style="color:#ff3b30">-2.4%</span></div><div class="tk-rsi" style="color:#34c759">RSI 47 中性</div><div class="tk-cnt">提及 14 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">NVIDIA Confidential Computing to Help Expand Apple’s Private Cloud Compute NVIDIA GPUs with Confidential Computing are now used for confidential inference in Apple’s Private Cloud Compute (PCC), as it expands beyond Apple’s data centers to Google Clo</div>
+    <div class="tk-source">NVIDIA Blog</div>
+  </div>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">GOOG</div><div class="tk-price">$371.10 <span style="color:#34c759">+1.1%</span></div><div class="tk-rsi" style="color:#34c759">RSI 42 中性</div><div class="tk-cnt">提及 2 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">NVIDIA Confidential Computing to Help Expand Apple’s Private Cloud Compute NVIDIA GPUs with Confidential Computing are now used for confidential inference in Apple’s Private Cloud Compute (PCC), as it expands beyond Apple’s data centers to Google Clo</div>
+    <div class="tk-source">NVIDIA Blog</div>
+  </div>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">COHR</div><div class="tk-price">$382.81 <span style="color:#ff3b30">-7.5%</span></div><div class="tk-rsi" style="color:#34c759">RSI 50 中性</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">Coherent Breaks Ground on Expanded Texas Facility, Scaling AI’s Optical Backbone AI runs at the speed of light. More and more, that light is made in Texas. Coherent broke ground today on an expanded m</div>
+    <div class="tk-source">NVIDIA Blog</div>
+  </div>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">INTC</div><div class="tk-price">$117.05 <span style="color:#ff3b30">-8.4%</span></div><div class="tk-rsi" style="color:#34c759">RSI 47 中性</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">As models grow in size, complexity and intelligence, the demands on training infrastructure are also rising.</div>
+    <div class="tk-source">NVIDIA Blog</div>
+  </div>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">AAPL</div><div class="tk-price">$299.24 <span style="color:#34c759">+0.9%</span></div><div class="tk-rsi" style="color:#34c759">RSI 40 中性</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">NVIDIA Confidential Computing to Help Expand Apple’s Private Cloud Compute NVIDIA GPUs with Confidential Computing are now used for confidential inference in Apple’s Private Cloud Compute (PCC), as it expands beyond Apple’s data centers to Google Clo</div>
+    <div class="tk-source">NVIDIA Blog</div>
+  </div>
+</div></div></div>
+</div><div class="persona-card section" style="padding:0;overflow:hidden">
+  <div class="persona-head" style="background:#6c5ce7">
+  <span class="pa-icon">🔬</span>
+  <div>
+    <div class="pa-name">Serenity</div>
+    <div class="pa-title">供应链研究 / 半导体产业链</div>
+    <div class="pa-handle">@Serenity_Inv</div>
+  </div>
+  <div class="pa-stat">
+    <div>近期提及：TSM  GOOG  NVDA</div>
+    <div style="margin-top:3px;opacity:.7">25 条来源</div>
+  </div>
+</div>
+  <div class="persona-posts"><div class="tk-summary-list"><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">TSM</div><div class="tk-price">$425.83 <span style="color:#ff3b30">-3.5%</span></div><div class="tk-rsi" style="color:#34c759">RSI 51 中性</div><div class="tk-cnt">提及 2 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">Taiwan Is Facing Its Worst Rainfall in 75 Years, and the Hardest-Hit Area Is Exactly Where TSMC’s Most Advanced Fabs Are - Wccftech Taiwan Is Facing Its Worst Rainfall in 75 Years, and the Hardest-Hit Area Is Exactly Where TSMC’s Most Advanced Fabs A</div>
+    <div class="tk-source">Google News (供应链)</div>
+  </div>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">GOOG</div><div class="tk-price">$371.10 <span style="color:#34c759">+1.1%</span></div><div class="tk-rsi" style="color:#34c759">RSI 42 中性</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">Chip testing latest chokepoint as Nvidia, Google designs grow more complex - Nikkei Asia Chip testing latest chokepoint as Nvidia, Google designs grow more complex Nikkei Asia</div>
+    <div class="tk-source">Google News (供应链)</div>
+  </div>
+</div><div class="tk-row">
+  <div class="tk-badge"><div class="tk-sym">NVDA</div><div class="tk-price">$207.41 <span style="color:#ff3b30">-2.4%</span></div><div class="tk-rsi" style="color:#34c759">RSI 47 中性</div><div class="tk-cnt">提及 1 次</div></div>
+  <div class="tk-content">
+    <div class="tk-excerpt">Chip testing latest chokepoint as Nvidia, Google designs grow more complex - Nikkei Asia Chip testing latest chokepoint as Nvidia, Google designs grow more complex Nikkei Asia</div>
+    <div class="tk-source">Google News (供应链)</div>
+  </div>
+</div></div></div>
+</div>
+  <p style="text-align:center;color:#86868b;font-size:.78rem;margin-top:20px">
+    数据来源：Truth Social · NVIDIA Newsroom · X (via Nitter) · 生成于 2026-06-17 ·
+    仅供研究参考，不构成投资建议
+  </p>
+</div>
+</body>
+</html>
